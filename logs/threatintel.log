@@ -1,0 +1,9 @@
+2026-07-29 00:54:35,417 | INFO     | ThreatIntel started
+2026-07-29 00:54:35,420 | WARNING  | This is a warning
+2026-07-29 00:54:35,420 | ERROR    | This is an error
+2026-07-29 01:03:41,823 | INFO     | Synchronization started
+2026-07-29 01:03:43,169 | INFO     | Retrieved 5 CVEs from NVD
+2026-07-29 01:03:43,209 | INFO     | Synchronization completed
+2026-07-29 02:30:40,741 | INFO     | Synchronization started
+2026-07-29 02:30:42,129 | INFO     | Retrieved 5 CVEs from NVD
+2026-07-29 02:30:42,179 | INFO     | Synchronization completed

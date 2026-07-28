@@ -38,16 +38,14 @@ class CVERepository:
         conn = self.database.connect()
         cursor = conn.cursor()
 
-        cursor.execute(
-            """
+        cursor.execute("""
             SELECT cve_id,
                    published,
                    severity,
                    description
             FROM vulnerabilities
             ORDER BY published DESC
-            """
-        )
+            """)
 
         rows = cursor.fetchall()
 
@@ -62,3 +60,30 @@ class CVERepository:
             )
             for row in rows
         ]
+
+    def get_statistics(self):
+        """Return vulnerability statistics."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM vulnerabilities
+            """)
+        total = cursor.fetchone()[0]
+
+        cursor.execute("""
+            SELECT severity, COUNT(*)
+            FROM vulnerabilities
+            GROUP BY severity
+            """)
+
+        severity_counts = {severity: count for severity, count in cursor.fetchall()}
+
+        conn.close()
+
+        return {
+            "total": total,
+            "severity": severity_counts,
+        }

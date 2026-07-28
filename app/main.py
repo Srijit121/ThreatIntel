@@ -2,6 +2,7 @@ import argparse
 
 from app.services.threat_service import ThreatService
 from app.ui.dashboard import show_vulnerabilities
+from app.ui.status_dashboard import show_status
 
 
 def parse_args():
@@ -20,6 +21,19 @@ def parse_args():
         help="Filter vulnerabilities by severity",
     )
 
+    parser.add_argument(
+        "--sync",
+        action="store_true",
+        help="Synchronize the local database with the NVD API",
+    )
+
+    parser.add_argument(
+        "--status",
+        action="store_true",
+        help="Show database statistics",
+    )
+
+
     return parser.parse_args()
 
 
@@ -29,7 +43,17 @@ def main():
 
     service = ThreatService()
 
-    vulnerabilities = service.get_latest_vulnerabilities(
+    if args.status:
+            stats = service.status()
+            show_status(stats)
+            return
+    
+
+    if args.sync:
+        print("Synchronizing with the NVD database...")
+        service.sync()
+
+    vulnerabilities = service.get_vulnerabilities(
         severity=args.severity,
     )
 
