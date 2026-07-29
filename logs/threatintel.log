@@ -13,3 +13,116 @@
 2026-07-29 12:26:37,556 | INFO     | Synchronization started
 2026-07-29 12:26:39,519 | INFO     | Retrieved 5 CVEs from NVD
 2026-07-29 12:26:39,524 | INFO     | Synchronization completed
+2026-07-30 00:09:22,601 | INFO     | Synchronization started
+2026-07-30 00:09:23,818 | INFO     | Retrieved 5 CVEs from NVD
+2026-07-30 00:09:23,868 | INFO     | Synchronization completed
+2026-07-30 00:21:36,779 | INFO     | Synchronization started
+2026-07-30 00:21:37,989 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 00:21:38,113 | INFO     | Synchronization completed
+2026-07-30 00:23:01,833 | INFO     | Synchronization started
+2026-07-30 00:23:04,481 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 00:23:04,495 | INFO     | Synchronization completed
+2026-07-30 00:29:22,993 | INFO     | Synchronization started
+2026-07-30 00:29:22,994 | INFO     | Incremental sync since 2026-07-30T00:23:04
+2026-07-30 00:29:25,356 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 00:29:25,379 | INFO     | Synchronization completed
+2026-07-30 00:39:26,655 | INFO     | Synchronization started
+2026-07-30 00:39:26,656 | INFO     | Incremental sync since 2026-07-30T00:29:25
+2026-07-30 00:39:28,287 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 00:39:28,309 | INFO     | Synchronization completed
+2026-07-30 02:28:09,208 | INFO     | Synchronization started
+2026-07-30 02:28:09,210 | INFO     | Incremental sync since 2026-07-30T00:39:28
+2026-07-30 02:28:39,940 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 1252, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/ssl.py", line 1104, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='services.nvd.nist.gov', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 29, in sync
+    vulnerabilities = self.nvd.fetch_latest(last_sync)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 18, in fetch_latest
+    response = requests.get(
+               ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='services.nvd.nist.gov', port=443): Read timed out. (read timeout=30)
+2026-07-30 02:40:42,402 | INFO     | Synchronization started
+2026-07-30 02:40:42,403 | INFO     | Incremental sync since 2026-07-30T00:39:28
+2026-07-30 02:40:43,771 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 29, in sync
+    vulnerabilities = self.nvd.fetch_latest(last_sync)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 37, in fetch_latest
+    response.raise_for_status()
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T00%3A39%3A28&lastModEndDate=2026-07-29T21%3A10%3A42.000Z
+2026-07-30 02:41:59,393 | INFO     | Synchronization started
+2026-07-30 02:41:59,393 | INFO     | No previous sync found. Performing full sync.
+2026-07-30 02:42:00,884 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 02:42:01,034 | INFO     | Synchronization completed
+2026-07-30 03:01:40,463 | INFO     | Synchronization started
+2026-07-30 03:01:40,464 | INFO     | Incremental sync since 2026-07-29T21:12:01.000Z
+2026-07-30 03:01:41,777 | INFO     | Retrieved 21 CVEs from NVD
+2026-07-30 03:01:41,909 | INFO     | Synchronization completed

@@ -9,19 +9,40 @@ class NVDCollector:
 
     BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
 
-    def fetch_latest(self, results_per_page=5):
-        """Fetch the latest CVEs published in the last 24 hours."""
+    def fetch_latest(self, last_sync=None, results_per_page=25):
+        """Fetch the latest CVEs."""
 
         now = datetime.now(UTC)
-        yesterday = now - timedelta(days=1)
+
+        params = {
+            "resultsPerPage": results_per_page,
+        }
+
+        if last_sync:
+            # Convert legacy timestamps (without timezone) to NVD format
+            if not last_sync.endswith("Z"):
+                last_sync = (
+                    datetime.fromisoformat(last_sync)
+                    .replace(tzinfo=UTC)
+                    .strftime("%Y-%m-%dT%H:%M:%S.000Z")
+                )
+
+            params["lastModStartDate"] = last_sync
+            params["lastModEndDate"] = now.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+        else:
+            yesterday = now - timedelta(days=1)
+
+            params["pubStartDate"] = yesterday.strftime(
+                "%Y-%m-%dT%H:%M:%S.000Z"
+            )
+            params["pubEndDate"] = now.strftime(
+                "%Y-%m-%dT%H:%M:%S.000Z"
+            )
 
         response = requests.get(
             self.BASE_URL,
-            params={
-                "resultsPerPage": results_per_page,
-                "pubStartDate": yesterday.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-                "pubEndDate": now.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-            },
+            params=params,
             timeout=30,
         )
 
@@ -34,7 +55,6 @@ class NVDCollector:
         for item in data.get("vulnerabilities", []):
             cve = item["cve"]
 
-            # Get English description
             description = ""
 
             for desc in cve.get("descriptions", []):
@@ -42,7 +62,6 @@ class NVDCollector:
                     description = desc.get("value", "")
                     break
 
-            # Determine severity
             severity = "UNKNOWN"
             metrics = cve.get("metrics", {})
 

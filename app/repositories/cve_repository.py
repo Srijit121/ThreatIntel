@@ -87,3 +87,42 @@ class CVERepository:
             "total": total,
             "severity": severity_counts,
         }
+    def set_metadata(self, key: str, value: str):
+        """Store application metadata."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute(
+        """
+        INSERT INTO metadata (key, value)
+        VALUES (?, ?)
+        ON CONFLICT(key)
+        DO UPDATE SET value = excluded.value
+        """,
+        (key, value),
+        )
+
+        conn.commit()
+        conn.close()
+
+    def get_metadata(self, key: str):
+        """Retrieve application metadata."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute(
+        """
+        SELECT value
+        FROM metadata
+        WHERE key = ?
+        """,
+        (key,),
+    )
+
+        row = cursor.fetchone()
+
+        conn.close()
+
+        return row[0] if row else None    

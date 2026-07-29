@@ -6,16 +6,21 @@ console = Console()
 
 
 def severity_colour(severity: str) -> str:
+    """Return the Rich colour for a severity level."""
+
     colours = {
         "CRITICAL": "bold red",
         "HIGH": "red",
         "MEDIUM": "yellow",
         "LOW": "green",
     }
+
     return colours.get(severity.upper(), "white")
 
 
 def show_vulnerabilities(vulnerabilities):
+    """Display vulnerability information."""
+
     table = Table(
         title="Threat Intelligence Dashboard",
         show_lines=True,
