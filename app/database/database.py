@@ -17,32 +17,51 @@ class Database:
         return sqlite3.connect(self.db_path)
 
     def initialize(self):
-        """Create the required database tables."""
+        """Create and migrate the SQLite database."""
 
         conn = self.connect()
         cursor = conn.cursor()
 
-        # Store vulnerability records
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS vulnerabilities (
                 cve_id TEXT PRIMARY KEY,
                 published TEXT NOT NULL,
+                modified TEXT,
                 severity TEXT,
+                cvss_score REAL,
+                cwe TEXT,
+                vendor TEXT,
+                product TEXT,
+                reference_urls TEXT,
                 description TEXT NOT NULL
             )
-            """
-        )
+            """)
 
-        # Store application metadata
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS metadata (
                 key TEXT PRIMARY KEY,
                 value TEXT
             )
-            """
-        )
+            """)
+
+        # Migrate older databases by adding missing columns.
+        cursor.execute("PRAGMA table_info(vulnerabilities)")
+        existing_columns = {row[1] for row in cursor.fetchall()}
+
+        migrations = {
+            "modified": "TEXT",
+            "cvss_score": "REAL",
+            "cwe": "TEXT",
+            "vendor": "TEXT",
+            "product": "TEXT",
+            "reference_urls": "TEXT",
+        }
+
+        for column, datatype in migrations.items():
+            if column not in existing_columns:
+                cursor.execute(
+                    f"ALTER TABLE vulnerabilities ADD COLUMN {column} {datatype}"
+                )
 
         conn.commit()
         conn.close()

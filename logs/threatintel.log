@@ -275,3 +275,45 @@ AttributeError: 'CVERepository' object has no attribute 'save'
 2026-07-30 16:01:30,166 | INFO     | Database Total : 194
 2026-07-30 16:01:30,166 | INFO     | Duration       : 2.97 seconds
 2026-07-30 16:01:30,166 | INFO     | ----------------------------------------
+2026-07-30 18:37:06,403 | INFO     | Synchronization started
+2026-07-30 18:37:06,404 | INFO     | Incremental sync since 2026-07-30T10:31:30.000Z
+2026-07-30 18:37:15,522 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 18:37:15,869 | INFO     | Synchronization completed
+2026-07-30 18:37:15,869 | INFO     | ----------------------------------------
+2026-07-30 18:37:15,870 | INFO     | Synchronization Summary
+2026-07-30 18:37:15,870 | INFO     | ----------------------------------------
+2026-07-30 18:37:15,870 | INFO     | Retrieved      : 25
+2026-07-30 18:37:15,870 | INFO     | New CVEs       : 25
+2026-07-30 18:37:15,870 | INFO     | Updated CVEs   : 0
+2026-07-30 18:37:15,871 | INFO     | Skipped CVEs   : 0
+2026-07-30 18:37:15,871 | INFO     | Database Total : 219
+2026-07-30 18:37:15,871 | INFO     | Duration       : 9.46 seconds
+2026-07-30 18:37:15,871 | INFO     | ----------------------------------------
+2026-07-30 19:15:05,860 | INFO     | Synchronization started
+2026-07-30 19:15:05,862 | INFO     | Incremental sync since 2026-07-30T13:07:15.000Z
+2026-07-30 19:15:08,079 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 19:15:08,403 | INFO     | Synchronization completed
+2026-07-30 19:15:08,403 | INFO     | ----------------------------------------
+2026-07-30 19:15:08,403 | INFO     | Synchronization Summary
+2026-07-30 19:15:08,404 | INFO     | ----------------------------------------
+2026-07-30 19:15:08,405 | INFO     | Retrieved      : 25
+2026-07-30 19:15:08,405 | INFO     | New CVEs       : 24
+2026-07-30 19:15:08,405 | INFO     | Updated CVEs   : 0
+2026-07-30 19:15:08,406 | INFO     | Skipped CVEs   : 1
+2026-07-30 19:15:08,406 | INFO     | Database Total : 243
+2026-07-30 19:15:08,406 | INFO     | Duration       : 2.54 seconds
+2026-07-30 19:15:08,407 | INFO     | ----------------------------------------
+2026-07-30 20:04:56,101 | INFO     | Synchronization started
+2026-07-30 20:04:56,101 | INFO     | Incremental sync since 2026-07-30T13:45:08.000Z
+2026-07-30 20:04:59,315 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 20:04:59,473 | INFO     | Synchronization completed
+2026-07-30 20:04:59,473 | INFO     | ----------------------------------------
+2026-07-30 20:04:59,474 | INFO     | Synchronization Summary
+2026-07-30 20:04:59,474 | INFO     | ----------------------------------------
+2026-07-30 20:04:59,474 | INFO     | Retrieved      : 25
+2026-07-30 20:04:59,475 | INFO     | New CVEs       : 25
+2026-07-30 20:04:59,475 | INFO     | Updated CVEs   : 0
+2026-07-30 20:04:59,475 | INFO     | Skipped CVEs   : 0
+2026-07-30 20:04:59,475 | INFO     | Database Total : 268
+2026-07-30 20:04:59,475 | INFO     | Duration       : 3.37 seconds
+2026-07-30 20:04:59,476 | INFO     | ----------------------------------------
