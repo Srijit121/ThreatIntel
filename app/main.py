@@ -10,13 +10,15 @@ def parse_args():
 
     parser.add_argument(
         "--severity",
-        choices=[
-            "LOW",
-            "MEDIUM",
-            "HIGH",
-            "CRITICAL",
-        ],
+        choices=["LOW", "MEDIUM", "HIGH", "CRITICAL"],
         help="Filter vulnerabilities by severity",
+    )
+
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=25,
+        help="Number of latest vulnerabilities to display (default: 25)",
     )
 
     parser.add_argument(
@@ -35,7 +37,6 @@ def parse_args():
 
 
 def main():
-
     args = parse_args()
 
     service = ThreatService()
@@ -53,7 +54,8 @@ def main():
         severity=args.severity,
     )
 
-    show_vulnerabilities(vulnerabilities)
+    # Display only the requested number of latest CVEs
+    show_vulnerabilities(vulnerabilities[: args.limit])
 
 
 if __name__ == "__main__":
