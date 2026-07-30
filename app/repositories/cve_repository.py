@@ -9,28 +9,97 @@ class CVERepository:
         self.database = Database()
         self.database.initialize()
 
-    def save(self, cve: CVE):
-        """Save a CVE into SQLite."""
+    def upsert(self, cve: CVE):
+        """
+        Insert a new CVE, update an existing one if it has changed,
+        or skip it if nothing has changed.
+
+        Returns:
+            "new", "updated", or "skipped"
+        """
 
         conn = self.database.connect()
         cursor = conn.cursor()
 
         cursor.execute(
             """
-            INSERT OR IGNORE INTO vulnerabilities
-            (cve_id, published, severity, description)
-            VALUES (?, ?, ?, ?)
+            SELECT published,
+                   severity,
+                   description
+            FROM vulnerabilities
+            WHERE cve_id = ?
             """,
-            (
-                cve.id,
-                cve.published,
-                cve.severity,
-                cve.description,
-            ),
+            (cve.id,),
         )
 
-        conn.commit()
+        existing = cursor.fetchone()
+
+        if existing is None:
+            cursor.execute(
+                """
+                INSERT INTO vulnerabilities
+                (cve_id, published, severity, description)
+                VALUES (?, ?, ?, ?)
+                """,
+                (
+                    cve.id,
+                    cve.published,
+                    cve.severity,
+                    cve.description,
+                ),
+            )
+
+            conn.commit()
+            conn.close()
+
+            return "new"
+
+        if (
+            existing[0] != cve.published
+            or existing[1] != cve.severity
+            or existing[2] != cve.description
+        ):
+            cursor.execute(
+                """
+                UPDATE vulnerabilities
+                SET published = ?,
+                    severity = ?,
+                    description = ?
+                WHERE cve_id = ?
+                """,
+                (
+                    cve.published,
+                    cve.severity,
+                    cve.description,
+                    cve.id,
+                ),
+            )
+
+            conn.commit()
+            conn.close()
+
+            return "updated"
+
         conn.close()
+
+        return "skipped"
+
+    def count_cves(self):
+        """Return the total number of stored CVEs."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM vulnerabilities
+            """)
+
+        total = cursor.fetchone()[0]
+
+        conn.close()
+
+        return total
 
     def get_all(self):
         """Return all stored CVEs."""
@@ -71,6 +140,7 @@ class CVERepository:
             SELECT COUNT(*)
             FROM vulnerabilities
             """)
+
         total = cursor.fetchone()[0]
 
         cursor.execute("""
@@ -87,6 +157,7 @@ class CVERepository:
             "total": total,
             "severity": severity_counts,
         }
+
     def set_metadata(self, key: str, value: str):
         """Store application metadata."""
 
@@ -94,13 +165,13 @@ class CVERepository:
         cursor = conn.cursor()
 
         cursor.execute(
-        """
-        INSERT INTO metadata (key, value)
-        VALUES (?, ?)
-        ON CONFLICT(key)
-        DO UPDATE SET value = excluded.value
-        """,
-        (key, value),
+            """
+            INSERT INTO metadata (key, value)
+            VALUES (?, ?)
+            ON CONFLICT(key)
+            DO UPDATE SET value = excluded.value
+            """,
+            (key, value),
         )
 
         conn.commit()
@@ -113,16 +184,16 @@ class CVERepository:
         cursor = conn.cursor()
 
         cursor.execute(
-        """
-        SELECT value
-        FROM metadata
-        WHERE key = ?
-        """,
-        (key,),
-    )
+            """
+            SELECT value
+            FROM metadata
+            WHERE key = ?
+            """,
+            (key,),
+        )
 
         row = cursor.fetchone()
 
         conn.close()
 
-        return row[0] if row else None    
+        return row[0] if row else None

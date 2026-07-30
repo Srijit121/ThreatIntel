@@ -126,3 +126,152 @@ requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://serv
 2026-07-30 03:01:40,464 | INFO     | Incremental sync since 2026-07-29T21:12:01.000Z
 2026-07-30 03:01:41,777 | INFO     | Retrieved 21 CVEs from NVD
 2026-07-30 03:01:41,909 | INFO     | Synchronization completed
+2026-07-30 11:27:06,872 | INFO     | Synchronization started
+2026-07-30 11:27:06,873 | INFO     | Incremental sync since 2026-07-29T21:31:41.000Z
+2026-07-30 11:27:08,290 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 11:27:08,407 | INFO     | Synchronization completed
+2026-07-30 11:41:36,590 | INFO     | Synchronization started
+2026-07-30 11:41:36,591 | INFO     | Incremental sync since 2026-07-30T05:57:08.000Z
+2026-07-30 11:41:37,667 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-30 11:41:37,676 | INFO     | Synchronization completed
+2026-07-30 11:48:19,302 | INFO     | Synchronization started
+2026-07-30 11:48:19,303 | INFO     | Incremental sync since 2026-07-30T06:11:37.000Z
+2026-07-30 11:48:21,670 | INFO     | Retrieved 12 CVEs from NVD
+2026-07-30 11:48:21,799 | INFO     | Synchronization completed
+2026-07-30 11:50:14,181 | INFO     | Synchronization started
+2026-07-30 11:50:14,182 | INFO     | Incremental sync since 2026-07-30T06:18:21.000Z
+2026-07-30 11:50:15,635 | INFO     | Retrieved 10 CVEs from NVD
+2026-07-30 11:50:15,707 | INFO     | Synchronization completed
+2026-07-30 11:51:55,511 | INFO     | Synchronization started
+2026-07-30 11:51:55,512 | INFO     | Incremental sync since 2026-07-30T06:20:15.000Z
+2026-07-30 11:51:55,579 | WARNING  | Retrying (Retry(total=2, connect=2, read=3, redirect=None, status=3)) after connection broken by 'NameResolutionError("HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)")': /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T06%3A20%3A15.000Z&lastModEndDate=2026-07-30T06%3A21%3A55.000Z
+2026-07-30 11:51:57,952 | WARNING  | Retrying (Retry(total=1, connect=1, read=3, redirect=None, status=3)) after connection broken by 'NameResolutionError("HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)")': /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T06%3A20%3A15.000Z&lastModEndDate=2026-07-30T06%3A21%3A55.000Z
+2026-07-30 11:52:02,416 | WARNING  | Retrying (Retry(total=0, connect=0, read=3, redirect=None, status=3)) after connection broken by 'NameResolutionError("HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)")': /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T06%3A20%3A15.000Z&lastModEndDate=2026-07-30T06%3A21%3A55.000Z
+2026-07-30 11:52:02,425 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 872, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 872, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 872, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid.nvd.nist.gov', port=443): Max retries exceeded with url: /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T06%3A20%3A15.000Z&lastModEndDate=2026-07-30T06%3A21%3A55.000Z (Caused by NameResolutionError("HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 81, in fetch_latest
+    response = session.get(
+               ^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 729, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid.nvd.nist.gov', port=443): Max retries exceeded with url: /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-30T06%3A20%3A15.000Z&lastModEndDate=2026-07-30T06%3A21%3A55.000Z (Caused by NameResolutionError("HTTPSConnection(host='invalid.nvd.nist.gov', port=443): Failed to resolve 'invalid.nvd.nist.gov' ([Errno -2] Name or service not known)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 29, in sync
+    vulnerabilities = self.nvd.fetch_latest(last_sync)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 102, in fetch_latest
+    raise RuntimeError(
+RuntimeError: Unable to connect to the NVD API.
+2026-07-30 11:53:26,706 | INFO     | Synchronization started
+2026-07-30 11:53:26,707 | INFO     | Incremental sync since 2026-07-30T06:20:15.000Z
+2026-07-30 11:53:29,104 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 11:53:29,275 | INFO     | Synchronization completed
+2026-07-30 14:43:31,154 | INFO     | Synchronization started
+2026-07-30 14:43:31,154 | INFO     | Incremental sync since 2026-07-30T06:23:29.000Z
+2026-07-30 14:43:34,700 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-30 14:43:34,869 | INFO     | Synchronization completed
+2026-07-30 15:28:03,990 | INFO     | Synchronization started
+2026-07-30 15:28:03,990 | INFO     | Incremental sync since 2026-07-30T09:13:34.000Z
+2026-07-30 15:28:05,388 | INFO     | Retrieved 4 CVEs from NVD
+2026-07-30 15:28:05,389 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 34, in sync
+    self.repository.save(cve)
+    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CVERepository' object has no attribute 'save'
+2026-07-30 15:58:43,961 | INFO     | Synchronization started
+2026-07-30 15:58:43,961 | INFO     | Incremental sync since 2026-07-30T09:13:34.000Z
+2026-07-30 15:58:45,426 | INFO     | Retrieved 15 CVEs from NVD
+2026-07-30 15:58:45,562 | INFO     | Synchronization completed
+2026-07-30 15:58:45,563 | INFO     | ----------------------------------------
+2026-07-30 15:58:45,563 | INFO     | Synchronization Summary
+2026-07-30 15:58:45,563 | INFO     | ----------------------------------------
+2026-07-30 15:58:45,564 | INFO     | Retrieved      : 15
+2026-07-30 15:58:45,564 | INFO     | New CVEs       : 15
+2026-07-30 15:58:45,564 | INFO     | Updated CVEs   : 0
+2026-07-30 15:58:45,564 | INFO     | Skipped CVEs   : 0
+2026-07-30 15:58:45,565 | INFO     | Database Total : 194
+2026-07-30 15:58:45,565 | INFO     | Duration       : 1.60 seconds
+2026-07-30 15:58:45,565 | INFO     | ----------------------------------------
+2026-07-30 16:01:27,191 | INFO     | Synchronization started
+2026-07-30 16:01:27,192 | INFO     | Incremental sync since 2026-07-30T10:28:45.000Z
+2026-07-30 16:01:30,153 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-30 16:01:30,164 | INFO     | Synchronization completed
+2026-07-30 16:01:30,164 | INFO     | ----------------------------------------
+2026-07-30 16:01:30,165 | INFO     | Synchronization Summary
+2026-07-30 16:01:30,165 | INFO     | ----------------------------------------
+2026-07-30 16:01:30,165 | INFO     | Retrieved      : 0
+2026-07-30 16:01:30,165 | INFO     | New CVEs       : 0
+2026-07-30 16:01:30,166 | INFO     | Updated CVEs   : 0
+2026-07-30 16:01:30,166 | INFO     | Skipped CVEs   : 0
+2026-07-30 16:01:30,166 | INFO     | Database Total : 194
+2026-07-30 16:01:30,166 | INFO     | Duration       : 2.97 seconds
+2026-07-30 16:01:30,166 | INFO     | ----------------------------------------

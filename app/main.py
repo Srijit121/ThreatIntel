@@ -6,9 +6,7 @@ from app.ui.status_dashboard import show_status
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description="Threat Intelligence Dashboard"
-    )
+    parser = argparse.ArgumentParser(description="Threat Intelligence Dashboard")
 
     parser.add_argument(
         "--severity",
@@ -33,7 +31,6 @@ def parse_args():
         help="Show database statistics",
     )
 
-
     return parser.parse_args()
 
 
@@ -44,10 +41,9 @@ def main():
     service = ThreatService()
 
     if args.status:
-            stats = service.status()
-            show_status(stats)
-            return
-    
+        stats = service.status()
+        show_status(stats)
+        return
 
     if args.sync:
         print("Synchronizing with the NVD database...")
