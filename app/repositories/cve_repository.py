@@ -17,7 +17,6 @@ class CVERepository:
         Returns:
             "new", "updated", or "skipped"
         """
-
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -45,16 +44,8 @@ class CVERepository:
             cursor.execute(
                 """
                 INSERT INTO vulnerabilities (
-                    cve_id,
-                    published,
-                    modified,
-                    severity,
-                    cvss_score,
-                    cwe,
-                    vendor,
-                    product,
-                    reference_urls,
-                    description
+                    cve_id, published, modified, severity, cvss_score,
+                    cwe, vendor, product, reference_urls, description
                 )
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
@@ -71,7 +62,6 @@ class CVERepository:
                     cve.description,
                 ),
             )
-
             conn.commit()
             conn.close()
             return "new"
@@ -115,7 +105,6 @@ class CVERepository:
                     cve.id,
                 ),
             )
-
             conn.commit()
             conn.close()
             return "updated"
@@ -125,7 +114,6 @@ class CVERepository:
 
     def count_cves(self):
         """Return the total number of stored CVEs."""
-
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -135,28 +123,11 @@ class CVERepository:
             """)
 
         total = cursor.fetchone()[0]
-
         conn.close()
-
         return total
 
     def get_all(self, limit=25):
-        """
-         Return the most actionable vulnerabilities.
-
-        Priority:
-        1. Critical
-        2. High
-        3. Medium
-        4. Low
-        5. Unknown
-
-        Within each severity, sort by highest CVSS score first,
-        then by newest published date.
-
-        Only display vulnerabilities that have vendor and CVSS data.
-        """
-
+        """Return the most actionable vulnerabilities."""
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -194,7 +165,46 @@ class CVERepository:
         )
 
         rows = cursor.fetchall()
+        conn.close()
 
+        return [
+            CVE(
+                id=row[0],
+                published=row[1],
+                modified=row[2],
+                severity=row[3],
+                cvss_score=row[4],
+                cwe=row[5],
+                vendor=row[6],
+                product=row[7],
+                reference_urls=row[8],
+                description=row[9],
+            )
+            for row in rows
+        ]
+
+    def get_all_cves(self):
+        """Return every CVE stored in the database."""
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT
+                cve_id,
+                published,
+                modified,
+                severity,
+                cvss_score,
+                cwe,
+                vendor,
+                product,
+                reference_urls,
+                description
+            FROM vulnerabilities
+            ORDER BY datetime(published) DESC
+            """)
+
+        rows = cursor.fetchall()
         conn.close()
 
         return [
@@ -215,7 +225,6 @@ class CVERepository:
 
     def set_metadata(self, key: str, value: str):
         """Store application metadata."""
-
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -234,7 +243,6 @@ class CVERepository:
 
     def get_metadata(self, key: str):
         """Retrieve application metadata."""
-
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -248,7 +256,6 @@ class CVERepository:
         )
 
         row = cursor.fetchone()
-
         conn.close()
 
         return row[0] if row else None

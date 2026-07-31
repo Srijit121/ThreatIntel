@@ -762,3 +762,445 @@ RuntimeError: NVD API returned HTTP 503: Service Unavailable
 2026-07-31 10:14:40,622 | INFO     | Database Total : 479
 2026-07-31 10:14:40,623 | INFO     | Duration       : 1.24 seconds
 2026-07-31 10:14:40,623 | INFO     | ----------------------------------------
+2026-07-31 13:45:30,194 | INFO     | Synchronization started
+2026-07-31 13:45:30,195 | INFO     | Incremental sync since 2026-07-31T04:44:40.000Z
+2026-07-31 13:45:31,931 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 13:45:32,087 | INFO     | Synchronization completed
+2026-07-31 13:45:32,087 | INFO     | ----------------------------------------
+2026-07-31 13:45:32,087 | INFO     | Synchronization Summary
+2026-07-31 13:45:32,088 | INFO     | ----------------------------------------
+2026-07-31 13:45:32,088 | INFO     | Retrieved      : 25
+2026-07-31 13:45:32,088 | INFO     | New CVEs       : 25
+2026-07-31 13:45:32,088 | INFO     | Updated CVEs   : 0
+2026-07-31 13:45:32,089 | INFO     | Skipped CVEs   : 0
+2026-07-31 13:45:32,089 | INFO     | Database Total : 504
+2026-07-31 13:45:32,089 | INFO     | Duration       : 1.89 seconds
+2026-07-31 13:45:32,089 | INFO     | ----------------------------------------
+2026-07-31 16:17:42,326 | INFO     | Synchronization started
+2026-07-31 16:17:42,326 | INFO     | Incremental sync since 2026-07-31T08:15:32.000Z
+2026-07-31 16:17:44,696 | INFO     | Retrieved 19 CVEs from NVD
+2026-07-31 16:17:45,354 | ERROR    | Failed to send notification for CVE-2026-10079
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 59, in sync
+    self._notify(cve)
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 153, in _notify
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:45,931 | ERROR    | Failed to send notification for CVE-2026-10079
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 84, in sync
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:46,523 | ERROR    | Failed to send notification for CVE-2026-11770
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 59, in sync
+    self._notify(cve)
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 153, in _notify
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:47,101 | ERROR    | Failed to send notification for CVE-2026-11770
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 84, in sync
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:47,675 | ERROR    | Failed to send notification for CVE-2026-15722
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 59, in sync
+    self._notify(cve)
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 153, in _notify
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:48,239 | ERROR    | Failed to send notification for CVE-2026-15722
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 84, in sync
+    self.notifier.send(
+  File "/home/srijit/Project/ThreatIntel/app/notifications/ntfy.py", line 18, in send
+    response = requests.post(
+               ^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 134, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 499, in request
+    self.putheader(header, value)
+  File "/home/srijit/Project/ThreatIntel/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 413, in putheader
+    super().putheader(header, *values)
+  File "/usr/lib/python3.12/http/client.py", line 1338, in putheader
+    values[i] = one_value.encode('latin-1')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in position 0: ordinal not in range(256)
+2026-07-31 16:17:48,267 | INFO     | Synchronization completed
+2026-07-31 16:17:48,267 | INFO     | ----------------------------------------
+2026-07-31 16:17:48,267 | INFO     | Synchronization Summary
+2026-07-31 16:17:48,268 | INFO     | ----------------------------------------
+2026-07-31 16:17:48,268 | INFO     | Retrieved      : 19
+2026-07-31 16:17:48,268 | INFO     | New CVEs       : 19
+2026-07-31 16:17:48,268 | INFO     | Updated CVEs   : 0
+2026-07-31 16:17:48,268 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:17:48,269 | INFO     | Database Total : 523
+2026-07-31 16:17:48,269 | INFO     | Duration       : 5.94 seconds
+2026-07-31 16:17:48,269 | INFO     | ----------------------------------------
+2026-07-31 16:29:13,891 | INFO     | Synchronization started
+2026-07-31 16:29:13,892 | INFO     | Incremental sync since 2026-07-31T10:47:48.000Z
+2026-07-31 16:29:15,513 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 16:29:15,524 | INFO     | Synchronization completed
+2026-07-31 16:29:15,524 | INFO     | ----------------------------------------
+2026-07-31 16:29:15,524 | INFO     | Synchronization Summary
+2026-07-31 16:29:15,524 | INFO     | ----------------------------------------
+2026-07-31 16:29:15,525 | INFO     | Retrieved      : 0
+2026-07-31 16:29:15,525 | INFO     | New CVEs       : 0
+2026-07-31 16:29:15,525 | INFO     | Updated CVEs   : 0
+2026-07-31 16:29:15,525 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:29:15,525 | INFO     | Database Total : 523
+2026-07-31 16:29:15,526 | INFO     | Duration       : 1.63 seconds
+2026-07-31 16:29:15,526 | INFO     | ----------------------------------------
+2026-07-31 16:40:54,070 | INFO     | Synchronization started
+2026-07-31 16:40:54,071 | INFO     | Incremental sync since 2026-07-31T10:59:15.000Z
+2026-07-31 16:40:55,301 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 16:40:55,316 | INFO     | Synchronization completed
+2026-07-31 16:40:55,317 | INFO     | ----------------------------------------
+2026-07-31 16:40:55,317 | INFO     | Synchronization Summary
+2026-07-31 16:40:55,317 | INFO     | ----------------------------------------
+2026-07-31 16:40:55,318 | INFO     | Retrieved      : 0
+2026-07-31 16:40:55,318 | INFO     | New CVEs       : 0
+2026-07-31 16:40:55,318 | INFO     | Updated CVEs   : 0
+2026-07-31 16:40:55,319 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:40:55,319 | INFO     | Database Total : 523
+2026-07-31 16:40:55,320 | INFO     | Duration       : 1.25 seconds
+2026-07-31 16:40:55,320 | INFO     | ----------------------------------------
+2026-07-31 16:42:22,386 | INFO     | Synchronization started
+2026-07-31 16:42:22,387 | INFO     | Incremental sync since 2026-07-31T11:10:55.000Z
+2026-07-31 16:42:23,741 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 16:42:23,751 | INFO     | Synchronization completed
+2026-07-31 16:42:23,752 | INFO     | ----------------------------------------
+2026-07-31 16:42:23,752 | INFO     | Synchronization Summary
+2026-07-31 16:42:23,752 | INFO     | ----------------------------------------
+2026-07-31 16:42:23,753 | INFO     | Retrieved      : 0
+2026-07-31 16:42:23,753 | INFO     | New CVEs       : 0
+2026-07-31 16:42:23,753 | INFO     | Updated CVEs   : 0
+2026-07-31 16:42:23,753 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:42:23,753 | INFO     | Database Total : 523
+2026-07-31 16:42:23,754 | INFO     | Duration       : 1.36 seconds
+2026-07-31 16:42:23,754 | INFO     | ----------------------------------------
+2026-07-31 16:46:58,379 | INFO     | Synchronization started
+2026-07-31 16:46:58,380 | INFO     | Incremental sync since 2026-07-31T11:12:23.000Z
+2026-07-31 16:46:59,801 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 16:46:59,810 | INFO     | Synchronization completed
+2026-07-31 16:46:59,811 | INFO     | ----------------------------------------
+2026-07-31 16:46:59,811 | INFO     | Synchronization Summary
+2026-07-31 16:46:59,812 | INFO     | ----------------------------------------
+2026-07-31 16:46:59,813 | INFO     | Retrieved      : 0
+2026-07-31 16:46:59,813 | INFO     | New CVEs       : 0
+2026-07-31 16:46:59,814 | INFO     | Updated CVEs   : 0
+2026-07-31 16:46:59,814 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:46:59,814 | INFO     | Database Total : 523
+2026-07-31 16:46:59,815 | INFO     | Duration       : 1.43 seconds
+2026-07-31 16:46:59,816 | INFO     | ----------------------------------------
+2026-07-31 16:51:55,635 | INFO     | Synchronization started
+2026-07-31 16:51:55,637 | INFO     | Incremental sync since 2026-07-31T11:16:59.000Z
+2026-07-31 16:51:57,470 | INFO     | Retrieved 16 CVEs from NVD
+2026-07-31 16:51:57,621 | INFO     | Synchronization completed
+2026-07-31 16:51:57,621 | INFO     | ----------------------------------------
+2026-07-31 16:51:57,622 | INFO     | Synchronization Summary
+2026-07-31 16:51:57,622 | INFO     | ----------------------------------------
+2026-07-31 16:51:57,623 | INFO     | Retrieved      : 16
+2026-07-31 16:51:57,623 | INFO     | New CVEs       : 10
+2026-07-31 16:51:57,624 | INFO     | Updated CVEs   : 6
+2026-07-31 16:51:57,625 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:51:57,625 | INFO     | Database Total : 533
+2026-07-31 16:51:57,626 | INFO     | Duration       : 1.98 seconds
+2026-07-31 16:51:57,627 | INFO     | ----------------------------------------
+2026-07-31 16:58:33,052 | INFO     | Synchronization started
+2026-07-31 16:58:33,053 | INFO     | Incremental sync since 2026-07-31T11:21:57.000Z
+2026-07-31 16:58:34,398 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 16:58:34,410 | INFO     | Synchronization completed
+2026-07-31 16:58:34,411 | INFO     | ----------------------------------------
+2026-07-31 16:58:34,411 | INFO     | Synchronization Summary
+2026-07-31 16:58:34,411 | INFO     | ----------------------------------------
+2026-07-31 16:58:34,411 | INFO     | Retrieved      : 0
+2026-07-31 16:58:34,412 | INFO     | New CVEs       : 0
+2026-07-31 16:58:34,412 | INFO     | Updated CVEs   : 0
+2026-07-31 16:58:34,412 | INFO     | Skipped CVEs   : 0
+2026-07-31 16:58:34,412 | INFO     | Database Total : 533
+2026-07-31 16:58:34,413 | INFO     | Duration       : 1.36 seconds
+2026-07-31 16:58:34,413 | INFO     | ----------------------------------------
+2026-07-31 17:01:27,853 | INFO     | Synchronization started
+2026-07-31 17:01:27,854 | INFO     | Incremental sync since 2026-07-31T11:28:34.000Z
+2026-07-31 17:01:28,917 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 17:01:28,928 | INFO     | Synchronization completed
+2026-07-31 17:01:28,929 | INFO     | ----------------------------------------
+2026-07-31 17:01:28,930 | INFO     | Synchronization Summary
+2026-07-31 17:01:28,931 | INFO     | ----------------------------------------
+2026-07-31 17:01:28,932 | INFO     | Retrieved      : 0
+2026-07-31 17:01:28,932 | INFO     | New CVEs       : 0
+2026-07-31 17:01:28,933 | INFO     | Updated CVEs   : 0
+2026-07-31 17:01:28,933 | INFO     | Skipped CVEs   : 0
+2026-07-31 17:01:28,933 | INFO     | Database Total : 533
+2026-07-31 17:01:28,933 | INFO     | Duration       : 1.07 seconds
+2026-07-31 17:01:28,933 | INFO     | ----------------------------------------
+2026-07-31 17:13:15,402 | INFO     | Synchronization started
+2026-07-31 17:13:15,403 | INFO     | Incremental sync since 2026-07-31T11:31:28.000Z
+2026-07-31 17:13:16,495 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 17:13:16,506 | INFO     | Synchronization completed
+2026-07-31 17:13:16,506 | INFO     | ----------------------------------------
+2026-07-31 17:13:16,506 | INFO     | Synchronization Summary
+2026-07-31 17:13:16,507 | INFO     | ----------------------------------------
+2026-07-31 17:13:16,507 | INFO     | Retrieved      : 0
+2026-07-31 17:13:16,507 | INFO     | New CVEs       : 0
+2026-07-31 17:13:16,507 | INFO     | Updated CVEs   : 0
+2026-07-31 17:13:16,508 | INFO     | Skipped CVEs   : 0
+2026-07-31 17:13:16,508 | INFO     | Database Total : 533
+2026-07-31 17:13:16,508 | INFO     | Duration       : 1.10 seconds
+2026-07-31 17:13:16,508 | INFO     | ----------------------------------------
+2026-07-31 17:16:35,400 | INFO     | Synchronization started
+2026-07-31 17:16:35,400 | INFO     | Incremental sync since 2026-07-31T11:43:16.000Z
+2026-07-31 17:16:36,632 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 17:16:36,643 | INFO     | Synchronization completed
+2026-07-31 17:16:36,643 | INFO     | ----------------------------------------
+2026-07-31 17:16:36,643 | INFO     | Synchronization Summary
+2026-07-31 17:16:36,643 | INFO     | ----------------------------------------
+2026-07-31 17:16:36,643 | INFO     | Retrieved      : 0
+2026-07-31 17:16:36,643 | INFO     | New CVEs       : 0
+2026-07-31 17:16:36,644 | INFO     | Updated CVEs   : 0
+2026-07-31 17:16:36,644 | INFO     | Skipped CVEs   : 0
+2026-07-31 17:16:36,644 | INFO     | Database Total : 533
+2026-07-31 17:16:36,644 | INFO     | Duration       : 1.24 seconds
+2026-07-31 17:16:36,644 | INFO     | ----------------------------------------
+2026-07-31 18:39:29,189 | INFO     | Synchronization started
+2026-07-31 18:39:29,190 | INFO     | Incremental sync since 2026-07-31T11:46:36.000Z
+2026-07-31 18:39:31,198 | INFO     | Retrieved 22 CVEs from NVD
+2026-07-31 18:39:31,346 | INFO     | Synchronization completed
+2026-07-31 18:39:31,346 | INFO     | ----------------------------------------
+2026-07-31 18:39:31,346 | INFO     | Synchronization Summary
+2026-07-31 18:39:31,346 | INFO     | ----------------------------------------
+2026-07-31 18:39:31,347 | INFO     | Retrieved      : 22
+2026-07-31 18:39:31,347 | INFO     | New CVEs       : 21
+2026-07-31 18:39:31,348 | INFO     | Updated CVEs   : 1
+2026-07-31 18:39:31,348 | INFO     | Skipped CVEs   : 0
+2026-07-31 18:39:31,348 | INFO     | Database Total : 554
+2026-07-31 18:39:31,349 | INFO     | Duration       : 2.16 seconds
+2026-07-31 18:39:31,349 | INFO     | ----------------------------------------
+2026-07-31 19:05:11,610 | INFO     | Synchronization started
+2026-07-31 19:05:11,610 | INFO     | Incremental sync since 2026-07-31T13:09:31.000Z
+2026-07-31 19:05:44,944 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 19:05:45,103 | INFO     | Synchronization completed
+2026-07-31 19:05:45,104 | INFO     | ----------------------------------------
+2026-07-31 19:05:45,104 | INFO     | Synchronization Summary
+2026-07-31 19:05:45,104 | INFO     | ----------------------------------------
+2026-07-31 19:05:45,105 | INFO     | Retrieved      : 25
+2026-07-31 19:05:45,105 | INFO     | New CVEs       : 15
+2026-07-31 19:05:45,106 | INFO     | Updated CVEs   : 10
+2026-07-31 19:05:45,106 | INFO     | Skipped CVEs   : 0
+2026-07-31 19:05:45,106 | INFO     | Database Total : 569
+2026-07-31 19:05:45,107 | INFO     | Duration       : 33.49 seconds
+2026-07-31 19:05:45,107 | INFO     | ----------------------------------------
+2026-07-31 19:20:11,607 | INFO     | Synchronization started
+2026-07-31 19:20:11,607 | INFO     | Incremental sync since 2026-07-31T13:35:45.000Z
+2026-07-31 19:20:13,330 | INFO     | Retrieved 1 CVEs from NVD
+2026-07-31 19:20:13,347 | INFO     | Synchronization completed
+2026-07-31 19:20:13,347 | INFO     | ----------------------------------------
+2026-07-31 19:20:13,347 | INFO     | Synchronization Summary
+2026-07-31 19:20:13,348 | INFO     | ----------------------------------------
+2026-07-31 19:20:13,348 | INFO     | Retrieved      : 1
+2026-07-31 19:20:13,348 | INFO     | New CVEs       : 1
+2026-07-31 19:20:13,348 | INFO     | Updated CVEs   : 0
+2026-07-31 19:20:13,349 | INFO     | Skipped CVEs   : 0
+2026-07-31 19:20:13,349 | INFO     | Database Total : 570
+2026-07-31 19:20:13,349 | INFO     | Duration       : 1.74 seconds
+2026-07-31 19:20:13,349 | INFO     | ----------------------------------------
+2026-07-31 19:38:58,509 | INFO     | Synchronization started
+2026-07-31 19:38:58,511 | INFO     | Incremental sync since 2026-07-31T13:50:13.000Z
+2026-07-31 19:38:59,694 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 19:38:59,705 | INFO     | Synchronization completed
+2026-07-31 19:38:59,705 | INFO     | ----------------------------------------
+2026-07-31 19:38:59,705 | INFO     | Synchronization Summary
+2026-07-31 19:38:59,706 | INFO     | ----------------------------------------
+2026-07-31 19:38:59,706 | INFO     | Retrieved      : 0
+2026-07-31 19:38:59,706 | INFO     | New CVEs       : 0
+2026-07-31 19:38:59,706 | INFO     | Updated CVEs   : 0
+2026-07-31 19:38:59,706 | INFO     | Skipped CVEs   : 0
+2026-07-31 19:38:59,707 | INFO     | Database Total : 570
+2026-07-31 19:38:59,707 | INFO     | Duration       : 1.19 seconds
+2026-07-31 19:38:59,708 | INFO     | ----------------------------------------
+2026-07-31 19:47:18,169 | INFO     | Synchronization started
+2026-07-31 19:47:18,170 | INFO     | Incremental sync since 2026-07-31T14:08:59.000Z
+2026-07-31 19:47:20,034 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 19:47:21,012 | INFO     | Notification sent for CVE-2026-17804
+2026-07-31 19:47:21,859 | INFO     | Notification sent for CVE-2026-17811
+2026-07-31 19:47:21,879 | INFO     | Synchronization completed
+2026-07-31 19:47:21,880 | INFO     | ----------------------------------------
+2026-07-31 19:47:21,881 | INFO     | Synchronization Summary
+2026-07-31 19:47:21,881 | INFO     | ----------------------------------------
+2026-07-31 19:47:21,881 | INFO     | Retrieved      : 25
+2026-07-31 19:47:21,882 | INFO     | New CVEs       : 14
+2026-07-31 19:47:21,882 | INFO     | Updated CVEs   : 11
+2026-07-31 19:47:21,883 | INFO     | Skipped CVEs   : 0
+2026-07-31 19:47:21,883 | INFO     | Database Total : 584
+2026-07-31 19:47:21,883 | INFO     | Duration       : 3.71 seconds
+2026-07-31 19:47:21,883 | INFO     | ----------------------------------------

@@ -4,15 +4,23 @@ from time import perf_counter
 from app.collectors.nvd import NVDCollector
 from app.filters.cve_filter import CVEFilter
 from app.logging.logger import logger
+from app.notifications.ntfy import NtfyNotifier
 from app.repositories.cve_repository import CVERepository
+from app.watchlist import WatchList
+from app.config import Settings
 
 
 class ThreatService:
     """Service layer for threat intelligence operations."""
 
     def __init__(self):
+
         self.nvd = NVDCollector()
         self.repository = CVERepository()
+
+        settings = Settings()
+        self.watchlist = WatchList()
+        self.notifier = NtfyNotifier(settings.ntfy_topic)
 
     def sync(self):
         """Synchronize vulnerabilities from NVD."""
@@ -40,8 +48,34 @@ class ThreatService:
             }
 
             for cve in vulnerabilities:
+
                 result = self.repository.upsert(cve)
                 stats[result] += 1
+
+                notify = self.watchlist.should_notify(cve)
+
+                print(
+                    f"{cve.id} | Result={result} | Notify={notify} | "
+                    f"Vendor={cve.vendor} | Product={cve.product} | "
+                    f"Severity={cve.severity} | CVSS={cve.cvss_score}"
+                )
+
+                if result == "new" and notify:
+                    try:
+                        print(f"Sending notification for {cve.id}")
+                        self._notify(cve)
+                        logger.info("Notification sent for %s", cve.id)
+                    except Exception:
+                        logger.exception(
+                            "Failed to send notification for %s",
+                            cve.id,
+                        )
+
+                    except Exception:
+                        logger.exception(
+                            "Failed to send notification for %s",
+                            cve.id,
+                        )
 
             self.repository.set_metadata(
                 "last_sync",
@@ -68,16 +102,6 @@ class ThreatService:
             raise
 
     def get_vulnerabilities(self, severity=None, limit=25):
-        """
-        Return vulnerabilities from the database.
-
-        Args:
-            severity: Optional severity filter
-            limit: Maximum number of CVEs to return
-
-        Returns:
-            List[CVE]
-        """
 
         vulnerabilities = self.repository.get_all(limit)
 
@@ -90,9 +114,27 @@ class ThreatService:
         return vulnerabilities
 
     def status(self):
-        """Return database statistics."""
 
         stats = self.repository.get_statistics()
         stats["last_sync"] = self.repository.get_metadata("last_sync")
 
         return stats
+
+    def _notify(self, cve):
+        """Send an ntfy notification."""
+
+        message = (
+            f"CVE: {cve.id}\n\n"
+            f"Severity : {cve.severity}\n"
+            f"CVSS     : {cve.cvss_score}\n\n"
+            f"Vendor   : {cve.vendor}\n"
+            f"Product  : {cve.product}\n\n"
+            f"Published: {cve.published[:10]}\n\n"
+            f"https://nvd.nist.gov/vuln/detail/{cve.id}"
+        )
+
+        self.notifier.send(
+            title=f"{cve.id}",
+            message=message,
+            priority="high",
+        )

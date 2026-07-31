@@ -1,0 +1,50 @@
+{
+    "vendors": [
+        "Microsoft",
+        "Google",
+        "VMware",
+        "Citrix",
+        "Fortinet",
+        "Cisco",
+        "Palo Alto Networks",
+        "Ivanti",
+        "Zscaler",
+        "Oracle",
+        "Red Hat",
+        "Canonical",
+        "SUSE",
+        "Debian"
+    ],
+    "products": [
+        "Windows",
+        "Windows Server",
+        "Azure",
+        "Entra ID",
+        "Office",
+        "Exchange",
+        "Defender",
+        "Chrome",
+        "ESXi",
+        "vCenter",
+        "NetScaler ADC",
+        "NetScaler Gateway",
+        "FortiOS",
+        "FortiGate",
+        "PAN-OS",
+        "Connect Secure",
+        "ZIA",
+        "ZPA",
+        "Client Connector",
+        "Linux Kernel",
+        "Ubuntu",
+        "RHEL",
+        "OpenShift",
+        "Java",
+        "WebLogic"
+    ],
+    "minimum_cvss": 8.0,
+    "notify_severity": [
+        "CRITICAL",
+        "HIGH"
+    ]
+}

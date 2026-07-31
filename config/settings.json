@@ -1,0 +1,6 @@
+{
+    "ntfy": {
+        "enabled": true,
+        "topic": "sriv-threatintel"
+    }
+}

@@ -3,6 +3,7 @@ import argparse
 from app.services.threat_service import ThreatService
 from app.ui.dashboard import show_vulnerabilities
 from app.ui.status_dashboard import show_status
+from app.exporters.excel_exporter import ExcelExporter
 
 
 def parse_args():
@@ -14,6 +15,11 @@ def parse_args():
         help="Filter vulnerabilities by severity",
     )
 
+    parser.add_argument(
+        "--export",
+        action="store_true",
+        help="Export all CVEs to an Excel report",
+    )
     parser.add_argument(
         "--limit",
         type=int,
@@ -40,6 +46,19 @@ def main():
     args = parse_args()
 
     service = ThreatService()
+
+    if args.export:
+        exporter = ExcelExporter()
+
+        cves = service.repository.get_all_cves()
+
+        exporter.export(
+            cves,
+            "reports/CVE_Report.xlsx",
+        )
+
+        print("Excel report created: reports/CVE_Report.xlsx")
+        return
 
     if args.status:
         stats = service.status()
