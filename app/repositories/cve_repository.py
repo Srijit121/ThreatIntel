@@ -23,9 +23,16 @@ class CVERepository:
 
         cursor.execute(
             """
-            SELECT published,
-                   severity,
-                   description
+            SELECT
+                published,
+                modified,
+                severity,
+                cvss_score,
+                cwe,
+                vendor,
+                product,
+                reference_urls,
+                description
             FROM vulnerabilities
             WHERE cve_id = ?
             """,
@@ -37,39 +44,73 @@ class CVERepository:
         if existing is None:
             cursor.execute(
                 """
-                INSERT INTO vulnerabilities
-                (cve_id, published, severity, description)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO vulnerabilities (
+                    cve_id,
+                    published,
+                    modified,
+                    severity,
+                    cvss_score,
+                    cwe,
+                    vendor,
+                    product,
+                    reference_urls,
+                    description
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     cve.id,
                     cve.published,
+                    cve.modified,
                     cve.severity,
+                    cve.cvss_score,
+                    cve.cwe,
+                    cve.vendor,
+                    cve.product,
+                    cve.reference_urls,
                     cve.description,
                 ),
             )
 
             conn.commit()
             conn.close()
-
             return "new"
 
-        if (
-            existing[0] != cve.published
-            or existing[1] != cve.severity
-            or existing[2] != cve.description
+        if existing != (
+            cve.published,
+            cve.modified,
+            cve.severity,
+            cve.cvss_score,
+            cve.cwe,
+            cve.vendor,
+            cve.product,
+            cve.reference_urls,
+            cve.description,
         ):
             cursor.execute(
                 """
                 UPDATE vulnerabilities
-                SET published = ?,
+                SET
+                    published = ?,
+                    modified = ?,
                     severity = ?,
+                    cvss_score = ?,
+                    cwe = ?,
+                    vendor = ?,
+                    product = ?,
+                    reference_urls = ?,
                     description = ?
                 WHERE cve_id = ?
                 """,
                 (
                     cve.published,
+                    cve.modified,
                     cve.severity,
+                    cve.cvss_score,
+                    cve.cwe,
+                    cve.vendor,
+                    cve.product,
+                    cve.reference_urls,
                     cve.description,
                     cve.id,
                 ),
@@ -77,11 +118,9 @@ class CVERepository:
 
             conn.commit()
             conn.close()
-
             return "updated"
 
         conn.close()
-
         return "skipped"
 
     def count_cves(self):
@@ -101,20 +140,58 @@ class CVERepository:
 
         return total
 
-    def get_all(self):
-        """Return all stored CVEs."""
+    def get_all(self, limit=25):
+        """
+         Return the most actionable vulnerabilities.
+
+        Priority:
+        1. Critical
+        2. High
+        3. Medium
+        4. Low
+        5. Unknown
+
+        Within each severity, sort by highest CVSS score first,
+        then by newest published date.
+
+        Only display vulnerabilities that have vendor and CVSS data.
+        """
 
         conn = self.database.connect()
         cursor = conn.cursor()
 
-        cursor.execute("""
-            SELECT cve_id,
-                   published,
-                   severity,
-                   description
+        cursor.execute(
+            """
+            SELECT
+                cve_id,
+                published,
+                modified,
+                severity,
+                cvss_score,
+                cwe,
+                vendor,
+                product,
+                reference_urls,
+                description
             FROM vulnerabilities
-            ORDER BY published DESC
-            """)
+            WHERE
+                vendor IS NOT NULL
+                AND vendor != 'n/a'
+                AND cvss_score IS NOT NULL
+            ORDER BY
+                CASE severity
+                    WHEN 'CRITICAL' THEN 1
+                    WHEN 'HIGH' THEN 2
+                    WHEN 'MEDIUM' THEN 3
+                    WHEN 'LOW' THEN 4
+                    ELSE 5
+                END,
+                cvss_score DESC,
+                datetime(published) DESC
+            LIMIT ?
+            """,
+            (limit,),
+        )
 
         rows = cursor.fetchall()
 
@@ -124,39 +201,17 @@ class CVERepository:
             CVE(
                 id=row[0],
                 published=row[1],
-                severity=row[2],
-                description=row[3],
+                modified=row[2],
+                severity=row[3],
+                cvss_score=row[4],
+                cwe=row[5],
+                vendor=row[6],
+                product=row[7],
+                reference_urls=row[8],
+                description=row[9],
             )
             for row in rows
         ]
-
-    def get_statistics(self):
-        """Return vulnerability statistics."""
-
-        conn = self.database.connect()
-        cursor = conn.cursor()
-
-        cursor.execute("""
-            SELECT COUNT(*)
-            FROM vulnerabilities
-            """)
-
-        total = cursor.fetchone()[0]
-
-        cursor.execute("""
-            SELECT severity, COUNT(*)
-            FROM vulnerabilities
-            GROUP BY severity
-            """)
-
-        severity_counts = {severity: count for severity, count in cursor.fetchall()}
-
-        conn.close()
-
-        return {
-            "total": total,
-            "severity": severity_counts,
-        }
 
     def set_metadata(self, key: str, value: str):
         """Store application metadata."""

@@ -668,3 +668,97 @@ RuntimeError: NVD API returned HTTP 503: Service Unavailable
 2026-07-30 23:12:47,118 | INFO     | Database Total : 432
 2026-07-30 23:12:47,119 | INFO     | Duration       : 2.52 seconds
 2026-07-30 23:12:47,119 | INFO     | ----------------------------------------
+2026-07-31 09:18:05,211 | INFO     | Synchronization started
+2026-07-31 09:18:05,213 | INFO     | Incremental sync since 2026-07-30T17:42:47.000Z
+2026-07-31 09:18:10,144 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 09:18:10,312 | INFO     | Synchronization completed
+2026-07-31 09:18:10,312 | INFO     | ----------------------------------------
+2026-07-31 09:18:10,312 | INFO     | Synchronization Summary
+2026-07-31 09:18:10,312 | INFO     | ----------------------------------------
+2026-07-31 09:18:10,312 | INFO     | Retrieved      : 25
+2026-07-31 09:18:10,313 | INFO     | New CVEs       : 24
+2026-07-31 09:18:10,313 | INFO     | Updated CVEs   : 0
+2026-07-31 09:18:10,313 | INFO     | Skipped CVEs   : 1
+2026-07-31 09:18:10,314 | INFO     | Database Total : 456
+2026-07-31 09:18:10,314 | INFO     | Duration       : 5.10 seconds
+2026-07-31 09:18:10,315 | INFO     | ----------------------------------------
+2026-07-31 09:38:43,455 | INFO     | Synchronization started
+2026-07-31 09:38:43,456 | INFO     | Incremental sync since 2026-07-31T03:48:10.000Z
+2026-07-31 09:38:52,169 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 56, in fetch_latest
+    response.raise_for_status()
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-31T03%3A48%3A10.000Z&lastModEndDate=2026-07-31T04%3A08%3A43.000Z
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 32, in sync
+    vulnerabilities = self.nvd.fetch_latest(last_sync)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 59, in fetch_latest
+    raise RuntimeError(
+RuntimeError: NVD API returned HTTP 503: Service Unavailable
+2026-07-31 09:39:01,475 | INFO     | Synchronization started
+2026-07-31 09:39:01,476 | INFO     | Incremental sync since 2026-07-31T03:48:10.000Z
+2026-07-31 09:39:10,345 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 56, in fetch_latest
+    response.raise_for_status()
+  File "/usr/lib/python3/dist-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://services.nvd.nist.gov/rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-31T03%3A48%3A10.000Z&lastModEndDate=2026-07-31T04%3A09%3A01.000Z
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 32, in sync
+    vulnerabilities = self.nvd.fetch_latest(last_sync)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/srijit/Project/ThreatIntel/app/collectors/nvd.py", line 59, in fetch_latest
+    raise RuntimeError(
+RuntimeError: NVD API returned HTTP 503: Service Unavailable
+2026-07-31 09:40:07,976 | INFO     | Synchronization started
+2026-07-31 09:40:07,977 | INFO     | Incremental sync since 2026-07-31T03:48:10.000Z
+2026-07-31 09:40:14,003 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 09:40:14,014 | INFO     | Synchronization completed
+2026-07-31 09:40:14,014 | INFO     | ----------------------------------------
+2026-07-31 09:40:14,016 | INFO     | Synchronization Summary
+2026-07-31 09:40:14,016 | INFO     | ----------------------------------------
+2026-07-31 09:40:14,016 | INFO     | Retrieved      : 0
+2026-07-31 09:40:14,017 | INFO     | New CVEs       : 0
+2026-07-31 09:40:14,017 | INFO     | Updated CVEs   : 0
+2026-07-31 09:40:14,017 | INFO     | Skipped CVEs   : 0
+2026-07-31 09:40:14,017 | INFO     | Database Total : 456
+2026-07-31 09:40:14,017 | INFO     | Duration       : 6.04 seconds
+2026-07-31 09:40:14,018 | INFO     | ----------------------------------------
+2026-07-31 09:54:00,864 | INFO     | Synchronization started
+2026-07-31 09:54:00,865 | INFO     | Incremental sync since 2026-07-31T04:10:14.000Z
+2026-07-31 09:54:05,180 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 09:54:05,350 | INFO     | Synchronization completed
+2026-07-31 09:54:05,350 | INFO     | ----------------------------------------
+2026-07-31 09:54:05,350 | INFO     | Synchronization Summary
+2026-07-31 09:54:05,350 | INFO     | ----------------------------------------
+2026-07-31 09:54:05,351 | INFO     | Retrieved      : 25
+2026-07-31 09:54:05,352 | INFO     | New CVEs       : 23
+2026-07-31 09:54:05,352 | INFO     | Updated CVEs   : 2
+2026-07-31 09:54:05,353 | INFO     | Skipped CVEs   : 0
+2026-07-31 09:54:05,353 | INFO     | Database Total : 479
+2026-07-31 09:54:05,353 | INFO     | Duration       : 4.48 seconds
+2026-07-31 09:54:05,354 | INFO     | ----------------------------------------
+2026-07-31 10:14:39,379 | INFO     | Synchronization started
+2026-07-31 10:14:39,380 | INFO     | Incremental sync since 2026-07-31T04:24:05.000Z
+2026-07-31 10:14:40,606 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 10:14:40,618 | INFO     | Synchronization completed
+2026-07-31 10:14:40,618 | INFO     | ----------------------------------------
+2026-07-31 10:14:40,619 | INFO     | Synchronization Summary
+2026-07-31 10:14:40,619 | INFO     | ----------------------------------------
+2026-07-31 10:14:40,620 | INFO     | Retrieved      : 0
+2026-07-31 10:14:40,620 | INFO     | New CVEs       : 0
+2026-07-31 10:14:40,621 | INFO     | Updated CVEs   : 0
+2026-07-31 10:14:40,622 | INFO     | Skipped CVEs   : 0
+2026-07-31 10:14:40,622 | INFO     | Database Total : 479
+2026-07-31 10:14:40,623 | INFO     | Duration       : 1.24 seconds
+2026-07-31 10:14:40,623 | INFO     | ----------------------------------------

@@ -52,6 +52,7 @@ def main():
 
     vulnerabilities = service.get_vulnerabilities(
         severity=args.severity,
+        limit=args.limit,
     )
 
     # Display only the requested number of latest CVEs

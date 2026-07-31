@@ -22,15 +22,16 @@ def show_vulnerabilities(vulnerabilities):
     """Display vulnerability information."""
 
     table = Table(
-        title="Threat Intelligence Dashboard",
-        show_lines=True,
+        show_header=True,
         header_style="bold cyan",
     )
 
     table.add_column("CVE", style="cyan", no_wrap=True)
     table.add_column("Severity", justify="center")
-    table.add_column("Published", style="green")
-    table.add_column("Description")
+    table.add_column("CVSS", justify="center")
+    table.add_column("Vendor", overflow="fold")
+    table.add_column("Product", overflow="fold")
+    table.add_column("Published")
 
     for cve in vulnerabilities:
         severity = Text(
@@ -46,9 +47,11 @@ def show_vulnerabilities(vulnerabilities):
 
         table.add_row(
             cve.id,
-            severity,
+            cve.severity or "UNKNOWN",
+            f"{cve.cvss_score:.1f}" if cve.cvss_score is not None else "-",
+            cve.vendor or "-",
+            cve.product or "-",
             cve.published[:10],
-            description,
         )
 
     console.print(table)

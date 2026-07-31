@@ -52,7 +52,6 @@ class ThreatService:
             total = self.repository.count_cves()
 
             logger.info("Synchronization completed")
-
             logger.info("-" * 40)
             logger.info("Synchronization Summary")
             logger.info("-" * 40)
@@ -68,10 +67,19 @@ class ThreatService:
             logger.exception("Synchronization failed")
             raise
 
-    def get_vulnerabilities(self, severity=None):
-        """Return vulnerabilities stored in SQLite."""
+    def get_vulnerabilities(self, severity=None, limit=25):
+        """
+        Return vulnerabilities from the database.
 
-        vulnerabilities = self.repository.get_all()
+        Args:
+            severity: Optional severity filter
+            limit: Maximum number of CVEs to return
+
+        Returns:
+            List[CVE]
+        """
+
+        vulnerabilities = self.repository.get_all(limit)
 
         if severity:
             vulnerabilities = CVEFilter.by_severity(
