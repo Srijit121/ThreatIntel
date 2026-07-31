@@ -1204,3 +1204,102 @@ UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in posit
 2026-07-31 19:47:21,883 | INFO     | Database Total : 584
 2026-07-31 19:47:21,883 | INFO     | Duration       : 3.71 seconds
 2026-07-31 19:47:21,883 | INFO     | ----------------------------------------
+2026-07-31 20:23:46,597 | INFO     | Synchronization started
+2026-07-31 20:23:46,598 | INFO     | Incremental sync since 2026-07-31T14:17:21.000Z
+2026-07-31 20:23:47,791 | INFO     | Retrieved 2 CVEs from NVD
+2026-07-31 20:23:47,818 | INFO     | Synchronization completed
+2026-07-31 20:23:47,819 | INFO     | ----------------------------------------
+2026-07-31 20:23:47,819 | INFO     | Synchronization Summary
+2026-07-31 20:23:47,819 | INFO     | ----------------------------------------
+2026-07-31 20:23:47,819 | INFO     | Retrieved      : 2
+2026-07-31 20:23:47,819 | INFO     | New CVEs       : 2
+2026-07-31 20:23:47,820 | INFO     | Updated CVEs   : 0
+2026-07-31 20:23:47,820 | INFO     | Skipped CVEs   : 0
+2026-07-31 20:23:47,820 | INFO     | Database Total : 586
+2026-07-31 20:23:47,820 | INFO     | Duration       : 1.22 seconds
+2026-07-31 20:23:47,820 | INFO     | ----------------------------------------
+2026-07-31 20:27:23,222 | INFO     | Synchronization started
+2026-07-31 20:27:23,223 | INFO     | Incremental sync since 2026-07-31T14:53:47.000Z
+2026-07-31 20:27:54,164 | WARNING  | Retrying (Retry(total=2, connect=3, read=2, redirect=None, status=3)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='services.nvd.nist.gov', port=443): Read timed out. (read timeout=30)")': /rest/json/cves/2.0?resultsPerPage=25&lastModStartDate=2026-07-31T14%3A53%3A47.000Z&lastModEndDate=2026-07-31T14%3A57%3A23.000Z
+2026-07-31 20:27:56,861 | INFO     | Retrieved 0 CVEs from NVD
+2026-07-31 20:27:56,871 | INFO     | Synchronization completed
+2026-07-31 20:27:56,871 | INFO     | ----------------------------------------
+2026-07-31 20:27:56,871 | INFO     | Synchronization Summary
+2026-07-31 20:27:56,872 | INFO     | ----------------------------------------
+2026-07-31 20:27:56,872 | INFO     | Retrieved      : 0
+2026-07-31 20:27:56,872 | INFO     | New CVEs       : 0
+2026-07-31 20:27:56,872 | INFO     | Updated CVEs   : 0
+2026-07-31 20:27:56,872 | INFO     | Skipped CVEs   : 0
+2026-07-31 20:27:56,873 | INFO     | Database Total : 586
+2026-07-31 20:27:56,874 | INFO     | Duration       : 33.65 seconds
+2026-07-31 20:27:56,874 | INFO     | ----------------------------------------
+2026-07-31 21:00:02,356 | INFO     | Synchronization started
+2026-07-31 21:00:02,357 | INFO     | Incremental sync since 2026-07-31T14:57:56.000Z
+2026-07-31 21:00:04,746 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 21:00:05,680 | INFO     | Notification sent for CVE-2013-0335
+2026-07-31 21:00:05,845 | INFO     | Synchronization completed
+2026-07-31 21:00:05,845 | INFO     | ----------------------------------------
+2026-07-31 21:00:05,845 | INFO     | Synchronization Summary
+2026-07-31 21:00:05,845 | INFO     | ----------------------------------------
+2026-07-31 21:00:05,846 | INFO     | Retrieved      : 25
+2026-07-31 21:00:05,846 | INFO     | New CVEs       : 24
+2026-07-31 21:00:05,846 | INFO     | Updated CVEs   : 1
+2026-07-31 21:00:05,846 | INFO     | Skipped CVEs   : 0
+2026-07-31 21:00:05,846 | INFO     | Database Total : 610
+2026-07-31 21:00:05,847 | INFO     | Duration       : 3.49 seconds
+2026-07-31 21:00:05,847 | INFO     | ----------------------------------------
+2026-07-31 22:00:02,187 | INFO     | Synchronization started
+2026-07-31 22:00:02,188 | INFO     | Incremental sync since 2026-07-31T15:30:05.000Z
+2026-07-31 22:00:04,279 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 22:00:05,430 | INFO     | Notification sent for CVE-2026-54228
+2026-07-31 22:00:06,323 | INFO     | Notification sent for CVE-2026-54229
+2026-07-31 22:00:07,450 | INFO     | Notification sent for CVE-2026-17652
+2026-07-31 22:00:08,386 | INFO     | Notification sent for CVE-2026-17801
+2026-07-31 22:00:09,321 | INFO     | Notification sent for CVE-2026-17803
+2026-07-31 22:00:09,350 | INFO     | Synchronization completed
+2026-07-31 22:00:09,351 | INFO     | ----------------------------------------
+2026-07-31 22:00:09,351 | INFO     | Synchronization Summary
+2026-07-31 22:00:09,351 | INFO     | ----------------------------------------
+2026-07-31 22:00:09,351 | INFO     | Retrieved      : 25
+2026-07-31 22:00:09,352 | INFO     | New CVEs       : 21
+2026-07-31 22:00:09,352 | INFO     | Updated CVEs   : 4
+2026-07-31 22:00:09,352 | INFO     | Skipped CVEs   : 0
+2026-07-31 22:00:09,352 | INFO     | Database Total : 631
+2026-07-31 22:00:09,352 | INFO     | Duration       : 7.16 seconds
+2026-07-31 22:00:09,353 | INFO     | ----------------------------------------
+2026-07-31 23:02:48,055 | INFO     | Synchronization started
+2026-07-31 23:02:48,058 | INFO     | Incremental sync since 2026-07-31T16:30:09.000Z
+2026-07-31 23:02:50,728 | INFO     | Retrieved 25 CVEs from NVD
+2026-07-31 23:02:50,894 | INFO     | Synchronization completed
+2026-07-31 23:02:50,894 | INFO     | ----------------------------------------
+2026-07-31 23:02:50,895 | INFO     | Synchronization Summary
+2026-07-31 23:02:50,895 | INFO     | ----------------------------------------
+2026-07-31 23:02:50,895 | INFO     | Retrieved      : 25
+2026-07-31 23:02:50,895 | INFO     | New CVEs       : 13
+2026-07-31 23:02:50,896 | INFO     | Updated CVEs   : 12
+2026-07-31 23:02:50,896 | INFO     | Skipped CVEs   : 0
+2026-07-31 23:02:50,896 | INFO     | Database Total : 644
+2026-07-31 23:02:50,896 | INFO     | Duration       : 2.84 seconds
+2026-07-31 23:02:50,897 | INFO     | ----------------------------------------
+2026-07-31 23:02:50,897 | INFO     | Generating Excel report...
+2026-07-31 23:02:51,056 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-07-31 23:02:51,057 | INFO     | Sending email report...
+2026-07-31 23:02:57,880 | INFO     | Email report sent successfully.
+2026-07-31 23:26:09,379 | INFO     | Synchronization started
+2026-07-31 23:26:09,380 | INFO     | Incremental sync since 2026-07-31T17:32:50.000Z
+2026-07-31 23:26:11,543 | INFO     | Retrieved 6 CVEs from NVD
+2026-07-31 23:26:11,600 | INFO     | Synchronization completed
+2026-07-31 23:26:11,601 | INFO     | ----------------------------------------
+2026-07-31 23:26:11,602 | INFO     | Synchronization Summary
+2026-07-31 23:26:11,602 | INFO     | ----------------------------------------
+2026-07-31 23:26:11,602 | INFO     | Retrieved      : 6
+2026-07-31 23:26:11,603 | INFO     | New CVEs       : 6
+2026-07-31 23:26:11,603 | INFO     | Updated CVEs   : 0
+2026-07-31 23:26:11,603 | INFO     | Skipped CVEs   : 0
+2026-07-31 23:26:11,603 | INFO     | Database Total : 650
+2026-07-31 23:26:11,603 | INFO     | Duration       : 2.22 seconds
+2026-07-31 23:26:11,604 | INFO     | ----------------------------------------
+2026-07-31 23:26:11,604 | INFO     | Generating Excel report...
+2026-07-31 23:26:11,768 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-07-31 23:26:11,768 | INFO     | Sending email report...
+2026-07-31 23:26:19,334 | INFO     | Email report sent successfully.

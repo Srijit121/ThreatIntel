@@ -1,9 +1,11 @@
 from pathlib import Path
+
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
 
 class ExcelExporter:
+    """Export CVEs to an Excel report."""
 
     def export(self, cves, filename):
         wb = Workbook()
@@ -37,3 +39,6 @@ class ExcelExporter:
         Path(filename).parent.mkdir(parents=True, exist_ok=True)
 
         wb.save(filename)
+
+        # Return the report path so it can be emailed
+        return filename

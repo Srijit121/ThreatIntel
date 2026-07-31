@@ -1,6 +1,8 @@
 from datetime import UTC, datetime
 from time import perf_counter
 
+from black import report
+
 from app.collectors.nvd import NVDCollector
 from app.filters.cve_filter import CVEFilter
 from app.logging.logger import logger
@@ -8,6 +10,8 @@ from app.notifications.ntfy import NtfyNotifier
 from app.repositories.cve_repository import CVERepository
 from app.watchlist import WatchList
 from app.config import Settings
+from app.notifications.email import EmailNotifier
+from app.exporters.excel_exporter import ExcelExporter
 
 
 class ThreatService:
@@ -21,6 +25,9 @@ class ThreatService:
         settings = Settings()
         self.watchlist = WatchList()
         self.notifier = NtfyNotifier(settings.ntfy_topic)
+
+        self.email = EmailNotifier()
+        self.exporter = ExcelExporter()
 
     def sync(self):
         """Synchronize vulnerabilities from NVD."""
@@ -97,6 +104,19 @@ class ThreatService:
             logger.info("Duration       : %.2f seconds", duration)
             logger.info("-" * 40)
 
+            # -------------------------------------------------------
+            # Generate and email report only when there are changes
+            # -------------------------------------------------------
+            if stats["new"] > 0 or stats["updated"] > 0:
+
+                logger.info("Generating Excel report...")
+
+                report = self.export_report()
+
+                logger.info("Sending email report...")
+
+                self.send_report(report, stats)
+
         except Exception:
             logger.exception("Synchronization failed")
             raise
@@ -119,6 +139,55 @@ class ThreatService:
         stats["last_sync"] = self.repository.get_metadata("last_sync")
 
         return stats
+
+    def export_report(self):
+        """Generate an Excel report of all stored CVEs."""
+
+        cves = self.repository.get_all_cves()
+
+        report_path = self.exporter.export(
+            cves,
+            "reports/CVE_Report.xlsx",
+        )
+
+        logger.info("Excel report created: %s", report_path)
+
+        return report_path
+
+    def send_report(self, report_path, stats):
+        """Email the generated Excel report."""
+
+        total = self.repository.count_cves()
+
+        subject = (
+            f"ThreatIntel | "
+            f"{stats['new']} New | "
+            f"{datetime.now().strftime('%d-%b-%Y')}"
+        )
+
+        body = (
+            "Hello Srijit,\n\n"
+            "ThreatIntel synchronization completed successfully.\n\n"
+            "=========================================\n"
+            "Synchronization Summary\n"
+            "=========================================\n\n"
+            f"Retrieved      : {stats['new'] + stats['updated'] + stats['skipped']}\n"
+            f"New CVEs       : {stats['new']}\n"
+            f"Updated CVEs   : {stats['updated']}\n"
+            f"Skipped CVEs   : {stats['skipped']}\n\n"
+            f"Database Total : {total}\n\n"
+            "The complete Excel report is attached.\n\n"
+            "Regards,\n"
+            "ThreatIntel"
+        )
+
+        self.email.send(
+            subject=subject,
+            body=body,
+            attachment=report_path,
+        )
+
+        logger.info("Email report sent successfully.")
 
     def _notify(self, cve):
         """Send an ntfy notification."""
