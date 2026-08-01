@@ -23,7 +23,10 @@ def show_status(stats):
         "Total CVEs",
         str(stats["total"]),
     )
-
+    table.add_row(
+        "KEV CVEs",
+        str(stats["kev"]),
+    )
     table.add_row(
         "Critical",
         str(severity.get("CRITICAL", 0)),

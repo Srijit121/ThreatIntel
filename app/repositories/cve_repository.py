@@ -113,7 +113,8 @@ class CVERepository:
         return "skipped"
 
     def count_cves(self):
-        """Return the total number of stored CVEs."""
+        """Return the total number of CVEs stored in the database."""
+
         conn = self.database.connect()
         cursor = conn.cursor()
 
@@ -123,7 +124,27 @@ class CVERepository:
             """)
 
         total = cursor.fetchone()[0]
+
         conn.close()
+
+        return total
+
+    def count_kev(self):
+        """Return the total number of Known Exploited Vulnerabilities."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM vulnerabilities
+            WHERE kev = 1
+            """)
+
+        total = cursor.fetchone()[0]
+
+        conn.close()
+
         return total
 
     def get_all(self, limit=25):
@@ -153,6 +174,8 @@ class CVERepository:
                 AND vendor != 'n/a'
                 AND cvss_score IS NOT NULL
             ORDER BY
+                kev DESC,
+
                 CASE severity
                     WHEN 'CRITICAL' THEN 1
                     WHEN 'HIGH' THEN 2
@@ -160,8 +183,11 @@ class CVERepository:
                     WHEN 'LOW' THEN 4
                     ELSE 5
                 END,
+
                 cvss_score DESC,
+
                 datetime(published) DESC
+
             LIMIT ?
             """,
             (limit,),
@@ -205,7 +231,7 @@ class CVERepository:
                 vendor,
                 product,
                 reference_urls,
-                description
+                description,
                 kev,
                 kev_date,
                 kev_due_date
@@ -228,9 +254,63 @@ class CVERepository:
                 product=row[7],
                 reference_urls=row[8],
                 description=row[9],
+                kev=bool(row[10]),
+                kev_date=row[11],
+                kev_due_date=row[12],
             )
             for row in rows
         ]
+
+    def get_by_id(self, cve_id: str):
+        """Return a single CVE by ID."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            """
+            SELECT
+                cve_id,
+                published,
+                modified,
+                severity,
+                cvss_score,
+                cwe,
+                vendor,
+                product,
+                reference_urls,
+                description,
+                kev,
+                kev_date,
+                kev_due_date
+            FROM vulnerabilities
+            WHERE cve_id = ?
+            """,
+            (cve_id,),
+        )
+
+        row = cursor.fetchone()
+
+        conn.close()
+
+        if row is None:
+            return None
+
+        return CVE(
+            id=row[0],
+            published=row[1],
+            modified=row[2],
+            severity=row[3],
+            cvss_score=row[4],
+            cwe=row[5],
+            vendor=row[6],
+            product=row[7],
+            reference_urls=row[8],
+            description=row[9],
+            kev=bool(row[10]),
+            kev_date=row[11],
+            kev_due_date=row[12],
+        )
 
     def get_statistics(self):
         """Return database statistics."""
@@ -251,6 +331,7 @@ class CVERepository:
 
         stats = {
             "total": self.count_cves(),
+            "kev": self.count_kev(),
             "severity": severity,
         }
 
@@ -264,11 +345,39 @@ class CVERepository:
         date_added: str,
         due_date: str,
     ):
-        """Mark a CVE as a Known Exploited Vulnerability."""
+        """
+        Mark a CVE as KEV.
+
+        Returns:
+            True  -> Newly added to KEV
+            False -> Already marked as KEV or CVE not found
+        """
 
         conn = self.database.connect()
         cursor = conn.cursor()
 
+        # Check current KEV state
+        cursor.execute(
+            """
+            SELECT kev
+            FROM vulnerabilities
+            WHERE cve_id = ?
+            """,
+            (cve_id,),
+        )
+
+        row = cursor.fetchone()
+
+        if row is None:
+            conn.close()
+            return False
+
+        # Already KEV
+        if row[0] == 1:
+            conn.close()
+            return False
+
+        # First time becoming KEV
         cursor.execute(
             """
             UPDATE vulnerabilities
@@ -285,12 +394,10 @@ class CVERepository:
             ),
         )
 
-        updated = cursor.rowcount
-
         conn.commit()
         conn.close()
 
-        return updated
+        return True
 
     def set_metadata(self, key: str, value: str):
         """Store application metadata."""

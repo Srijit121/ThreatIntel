@@ -5,7 +5,7 @@ from rich.text import Text
 console = Console()
 
 
-def severity_colour(severity: str) -> str:
+def severity_colour(severity: str | None) -> str:
     """Return the Rich colour for a severity level."""
 
     colours = {
@@ -15,7 +15,7 @@ def severity_colour(severity: str) -> str:
         "LOW": "green",
     }
 
-    return colours.get(severity.upper(), "white")
+    return colours.get((severity or "UNKNOWN").upper(), "white")
 
 
 def show_vulnerabilities(vulnerabilities):
@@ -35,27 +35,22 @@ def show_vulnerabilities(vulnerabilities):
     table.add_column("Published")
 
     for cve in vulnerabilities:
+
         severity = Text(
-            cve.severity,
+            cve.severity or "UNKNOWN",
             style=severity_colour(cve.severity),
         )
 
-        kev = "✅" if cve.kev else ""
-
-        description = (
-            cve.description[:70] + "..."
-            if len(cve.description) > 70
-            else cve.description
-        )
+        kev = "✅ YES" if cve.kev else ""
 
         table.add_row(
             cve.id,
-            cve.severity or "UNKNOWN",
+            severity,
             f"{cve.cvss_score:.1f}" if cve.cvss_score is not None else "-",
             kev,
             cve.vendor or "-",
             cve.product or "-",
-            cve.published[:10],
+            cve.published[:10] if cve.published else "-",
         )
 
     console.print(table)
