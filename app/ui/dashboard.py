@@ -29,6 +29,7 @@ def show_vulnerabilities(vulnerabilities):
     table.add_column("CVE", style="cyan", no_wrap=True)
     table.add_column("Severity", justify="center")
     table.add_column("CVSS", justify="center")
+    table.add_column("KEV", justify="center", style="bold red")
     table.add_column("Vendor", overflow="fold")
     table.add_column("Product", overflow="fold")
     table.add_column("Published")
@@ -38,6 +39,8 @@ def show_vulnerabilities(vulnerabilities):
             cve.severity,
             style=severity_colour(cve.severity),
         )
+
+        kev = "✅" if cve.kev else ""
 
         description = (
             cve.description[:70] + "..."
@@ -49,6 +52,7 @@ def show_vulnerabilities(vulnerabilities):
             cve.id,
             cve.severity or "UNKNOWN",
             f"{cve.cvss_score:.1f}" if cve.cvss_score is not None else "-",
+            kev,
             cve.vendor or "-",
             cve.product or "-",
             cve.published[:10],

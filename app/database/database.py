@@ -33,7 +33,10 @@ class Database:
                 vendor TEXT,
                 product TEXT,
                 reference_urls TEXT,
-                description TEXT NOT NULL
+                description TEXT NOT NULL,
+                kev INTEGER DEFAULT 0,
+                kev_date TEXT,
+                kev_due_date TEXT
             )
             """)
 
@@ -55,6 +58,10 @@ class Database:
             "vendor": "TEXT",
             "product": "TEXT",
             "reference_urls": "TEXT",
+            # KEV enrichment
+            "kev": "INTEGER DEFAULT 0",
+            "kev_date": "TEXT",
+            "kev_due_date": "TEXT",
         }
 
         for column, datatype in migrations.items():

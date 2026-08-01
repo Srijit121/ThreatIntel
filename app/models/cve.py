@@ -13,3 +13,8 @@ class CVE:
     vendor: str | None = None
     product: str | None = None
     reference_urls: str | None = None
+
+    # CISA KEV Enrichment
+    kev: bool = False
+    kev_date: str | None = None
+    kev_due_date: str | None = None

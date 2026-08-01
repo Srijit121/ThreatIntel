@@ -12,6 +12,7 @@ from app.watchlist import WatchList
 from app.config import Settings
 from app.notifications.email import EmailNotifier
 from app.exporters.excel_exporter import ExcelExporter
+from app.collectors.kev import KEVCollector
 
 
 class ThreatService:
@@ -20,6 +21,7 @@ class ThreatService:
     def __init__(self):
 
         self.nvd = NVDCollector()
+        self.kev = KEVCollector()
         self.repository = CVERepository()
 
         settings = Settings()
@@ -88,6 +90,11 @@ class ThreatService:
                 "last_sync",
                 datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
             )
+
+            # Synchronize CISA Known Exploited Vulnerabilities
+            self.sync_kev()
+
+            duration = perf_counter() - start_time
 
             duration = perf_counter() - start_time
             total = self.repository.count_cves()
@@ -206,4 +213,28 @@ class ThreatService:
             title=f"{cve.id}",
             message=message,
             priority="high",
+        )
+
+    def sync_kev(self):
+        """Synchronize the CISA KEV catalog."""
+
+        logger.info("Synchronizing CISA KEV catalog...")
+
+        kev_entries = self.kev.fetch()
+
+        matched = 0
+
+        for kev in kev_entries:
+
+            updated = self.repository.mark_as_kev(
+                kev.cve_id,
+                kev.date_added,
+                kev.due_date,
+            )
+
+            matched += updated
+
+        logger.info(
+            "KEV synchronization completed. Matched %d CVEs.",
+            matched,
         )

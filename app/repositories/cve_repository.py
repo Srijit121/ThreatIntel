@@ -143,7 +143,10 @@ class CVERepository:
                 vendor,
                 product,
                 reference_urls,
-                description
+                description,
+                kev,
+                kev_date,
+                kev_due_date
             FROM vulnerabilities
             WHERE
                 vendor IS NOT NULL
@@ -179,6 +182,9 @@ class CVERepository:
                 product=row[7],
                 reference_urls=row[8],
                 description=row[9],
+                kev=bool(row[10]),
+                kev_date=row[11],
+                kev_due_date=row[12],
             )
             for row in rows
         ]
@@ -200,6 +206,9 @@ class CVERepository:
                 product,
                 reference_urls,
                 description
+                kev,
+                kev_date,
+                kev_due_date
             FROM vulnerabilities
             ORDER BY datetime(published) DESC
             """)
@@ -222,6 +231,66 @@ class CVERepository:
             )
             for row in rows
         ]
+
+    def get_statistics(self):
+        """Return database statistics."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT severity, COUNT(*)
+            FROM vulnerabilities
+            GROUP BY severity
+            """)
+
+        severity = {}
+
+        for row in cursor.fetchall():
+            severity[row[0] or "UNKNOWN"] = row[1]
+
+        stats = {
+            "total": self.count_cves(),
+            "severity": severity,
+        }
+
+        conn.close()
+
+        return stats
+
+    def mark_as_kev(
+        self,
+        cve_id: str,
+        date_added: str,
+        due_date: str,
+    ):
+        """Mark a CVE as a Known Exploited Vulnerability."""
+
+        conn = self.database.connect()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            """
+            UPDATE vulnerabilities
+            SET
+                kev = 1,
+                kev_date = ?,
+                kev_due_date = ?
+            WHERE cve_id = ?
+            """,
+            (
+                date_added,
+                due_date,
+                cve_id,
+            ),
+        )
+
+        updated = cursor.rowcount
+
+        conn.commit()
+        conn.close()
+
+        return updated
 
     def set_metadata(self, key: str, value: str):
         """Store application metadata."""

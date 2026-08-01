@@ -1303,3 +1303,326 @@ UnicodeEncodeError: 'latin-1' codec can't encode character '\U0001f6a8' in posit
 2026-07-31 23:26:11,768 | INFO     | Excel report created: reports/CVE_Report.xlsx
 2026-07-31 23:26:11,768 | INFO     | Sending email report...
 2026-07-31 23:26:19,334 | INFO     | Email report sent successfully.
+2026-08-01 00:00:02,513 | INFO     | Synchronization started
+2026-08-01 00:00:02,514 | INFO     | Incremental sync since 2026-07-31T17:56:11.000Z
+2026-08-01 00:00:04,647 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 00:00:06,123 | INFO     | Notification sent for CVE-2026-48864
+2026-08-01 00:00:06,228 | INFO     | Synchronization completed
+2026-08-01 00:00:06,229 | INFO     | ----------------------------------------
+2026-08-01 00:00:06,229 | INFO     | Synchronization Summary
+2026-08-01 00:00:06,229 | INFO     | ----------------------------------------
+2026-08-01 00:00:06,229 | INFO     | Retrieved      : 25
+2026-08-01 00:00:06,229 | INFO     | New CVEs       : 22
+2026-08-01 00:00:06,229 | INFO     | Updated CVEs   : 3
+2026-08-01 00:00:06,230 | INFO     | Skipped CVEs   : 0
+2026-08-01 00:00:06,230 | INFO     | Database Total : 672
+2026-08-01 00:00:06,230 | INFO     | Duration       : 3.71 seconds
+2026-08-01 00:00:06,230 | INFO     | ----------------------------------------
+2026-08-01 00:00:06,230 | INFO     | Generating Excel report...
+2026-08-01 00:00:06,395 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 00:00:06,395 | INFO     | Sending email report...
+2026-08-01 00:00:14,174 | INFO     | Email report sent successfully.
+2026-08-01 01:00:00,763 | INFO     | Synchronization started
+2026-08-01 01:00:00,764 | INFO     | Incremental sync since 2026-07-31T18:30:06.000Z
+2026-08-01 01:00:02,128 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 01:00:04,535 | INFO     | Notification sent for CVE-2026-17847
+2026-08-01 01:00:05,451 | INFO     | Notification sent for CVE-2026-17848
+2026-08-01 01:00:05,475 | INFO     | Synchronization completed
+2026-08-01 01:00:05,476 | INFO     | ----------------------------------------
+2026-08-01 01:00:05,476 | INFO     | Synchronization Summary
+2026-08-01 01:00:05,476 | INFO     | ----------------------------------------
+2026-08-01 01:00:05,476 | INFO     | Retrieved      : 25
+2026-08-01 01:00:05,477 | INFO     | New CVEs       : 22
+2026-08-01 01:00:05,477 | INFO     | Updated CVEs   : 3
+2026-08-01 01:00:05,477 | INFO     | Skipped CVEs   : 0
+2026-08-01 01:00:05,477 | INFO     | Database Total : 694
+2026-08-01 01:00:05,478 | INFO     | Duration       : 4.71 seconds
+2026-08-01 01:00:05,478 | INFO     | ----------------------------------------
+2026-08-01 01:00:05,478 | INFO     | Generating Excel report...
+2026-08-01 01:00:05,640 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 01:00:05,640 | INFO     | Sending email report...
+2026-08-01 01:00:13,338 | INFO     | Email report sent successfully.
+2026-08-01 01:34:53,196 | INFO     | Synchronization started
+2026-08-01 01:34:53,198 | INFO     | Incremental sync since 2026-07-31T19:30:05.000Z
+2026-08-01 01:34:54,455 | INFO     | Retrieved 13 CVEs from NVD
+2026-08-01 01:34:54,642 | INFO     | Synchronization completed
+2026-08-01 01:34:54,642 | INFO     | ----------------------------------------
+2026-08-01 01:34:54,642 | INFO     | Synchronization Summary
+2026-08-01 01:34:54,642 | INFO     | ----------------------------------------
+2026-08-01 01:34:54,643 | INFO     | Retrieved      : 13
+2026-08-01 01:34:54,643 | INFO     | New CVEs       : 12
+2026-08-01 01:34:54,643 | INFO     | Updated CVEs   : 1
+2026-08-01 01:34:54,643 | INFO     | Skipped CVEs   : 0
+2026-08-01 01:34:54,643 | INFO     | Database Total : 706
+2026-08-01 01:34:54,643 | INFO     | Duration       : 1.44 seconds
+2026-08-01 01:34:54,644 | INFO     | ----------------------------------------
+2026-08-01 01:34:54,644 | INFO     | Generating Excel report...
+2026-08-01 01:34:54,873 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 01:34:54,874 | INFO     | Sending email report...
+2026-08-01 01:35:01,094 | INFO     | Email report sent successfully.
+2026-08-01 02:00:02,101 | INFO     | Synchronization started
+2026-08-01 02:00:02,102 | INFO     | Incremental sync since 2026-07-31T20:04:54.000Z
+2026-08-01 02:00:03,719 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 02:00:04,070 | INFO     | Synchronization completed
+2026-08-01 02:00:04,071 | INFO     | ----------------------------------------
+2026-08-01 02:00:04,071 | INFO     | Synchronization Summary
+2026-08-01 02:00:04,072 | INFO     | ----------------------------------------
+2026-08-01 02:00:04,072 | INFO     | Retrieved      : 25
+2026-08-01 02:00:04,072 | INFO     | New CVEs       : 22
+2026-08-01 02:00:04,072 | INFO     | Updated CVEs   : 3
+2026-08-01 02:00:04,073 | INFO     | Skipped CVEs   : 0
+2026-08-01 02:00:04,073 | INFO     | Database Total : 728
+2026-08-01 02:00:04,073 | INFO     | Duration       : 1.97 seconds
+2026-08-01 02:00:04,074 | INFO     | ----------------------------------------
+2026-08-01 02:00:04,074 | INFO     | Generating Excel report...
+2026-08-01 02:00:04,290 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 02:00:04,290 | INFO     | Sending email report...
+2026-08-01 02:00:10,128 | INFO     | Email report sent successfully.
+2026-08-01 02:37:45,542 | INFO     | Synchronization started
+2026-08-01 02:37:45,543 | INFO     | Incremental sync since 2026-07-31T20:30:04.000Z
+2026-08-01 02:37:48,763 | INFO     | Retrieved 22 CVEs from NVD
+2026-08-01 02:37:48,929 | INFO     | Synchronization completed
+2026-08-01 02:37:48,930 | INFO     | ----------------------------------------
+2026-08-01 02:37:48,930 | INFO     | Synchronization Summary
+2026-08-01 02:37:48,930 | INFO     | ----------------------------------------
+2026-08-01 02:37:48,930 | INFO     | Retrieved      : 22
+2026-08-01 02:37:48,930 | INFO     | New CVEs       : 22
+2026-08-01 02:37:48,931 | INFO     | Updated CVEs   : 0
+2026-08-01 02:37:48,931 | INFO     | Skipped CVEs   : 0
+2026-08-01 02:37:48,931 | INFO     | Database Total : 750
+2026-08-01 02:37:48,931 | INFO     | Duration       : 3.39 seconds
+2026-08-01 02:37:48,932 | INFO     | ----------------------------------------
+2026-08-01 02:37:48,932 | INFO     | Generating Excel report...
+2026-08-01 02:37:49,105 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 02:37:49,106 | INFO     | Sending email report...
+2026-08-01 02:37:57,756 | INFO     | Email report sent successfully.
+2026-08-01 03:00:01,972 | INFO     | Synchronization started
+2026-08-01 03:00:01,976 | INFO     | Incremental sync since 2026-07-31T21:07:48.000Z
+2026-08-01 03:00:04,561 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 03:00:04,729 | INFO     | Synchronization completed
+2026-08-01 03:00:04,729 | INFO     | ----------------------------------------
+2026-08-01 03:00:04,730 | INFO     | Synchronization Summary
+2026-08-01 03:00:04,730 | INFO     | ----------------------------------------
+2026-08-01 03:00:04,731 | INFO     | Retrieved      : 25
+2026-08-01 03:00:04,731 | INFO     | New CVEs       : 24
+2026-08-01 03:00:04,731 | INFO     | Updated CVEs   : 1
+2026-08-01 03:00:04,732 | INFO     | Skipped CVEs   : 0
+2026-08-01 03:00:04,732 | INFO     | Database Total : 774
+2026-08-01 03:00:04,732 | INFO     | Duration       : 2.75 seconds
+2026-08-01 03:00:04,733 | INFO     | ----------------------------------------
+2026-08-01 03:00:04,733 | INFO     | Generating Excel report...
+2026-08-01 03:00:04,913 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 03:00:04,914 | INFO     | Sending email report...
+2026-08-01 03:00:10,953 | INFO     | Email report sent successfully.
+2026-08-01 04:00:01,914 | INFO     | Synchronization started
+2026-08-01 04:00:01,915 | INFO     | Incremental sync since 2026-07-31T21:30:04.000Z
+2026-08-01 04:00:03,351 | INFO     | Retrieved 14 CVEs from NVD
+2026-08-01 04:00:04,493 | INFO     | Notification sent for CVE-2026-17768
+2026-08-01 04:00:05,520 | INFO     | Notification sent for CVE-2026-17784
+2026-08-01 04:00:05,591 | INFO     | Synchronization completed
+2026-08-01 04:00:05,591 | INFO     | ----------------------------------------
+2026-08-01 04:00:05,591 | INFO     | Synchronization Summary
+2026-08-01 04:00:05,592 | INFO     | ----------------------------------------
+2026-08-01 04:00:05,592 | INFO     | Retrieved      : 14
+2026-08-01 04:00:05,592 | INFO     | New CVEs       : 14
+2026-08-01 04:00:05,593 | INFO     | Updated CVEs   : 0
+2026-08-01 04:00:05,593 | INFO     | Skipped CVEs   : 0
+2026-08-01 04:00:05,593 | INFO     | Database Total : 788
+2026-08-01 04:00:05,593 | INFO     | Duration       : 3.68 seconds
+2026-08-01 04:00:05,593 | INFO     | ----------------------------------------
+2026-08-01 04:00:05,594 | INFO     | Generating Excel report...
+2026-08-01 04:00:05,778 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 04:00:05,778 | INFO     | Sending email report...
+2026-08-01 04:00:11,896 | INFO     | Email report sent successfully.
+2026-08-01 05:00:01,778 | INFO     | Synchronization started
+2026-08-01 05:00:01,779 | INFO     | Incremental sync since 2026-07-31T22:30:05.000Z
+2026-08-01 05:00:03,607 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 05:00:04,870 | INFO     | Notification sent for CVE-2026-16527
+2026-08-01 05:00:08,444 | INFO     | Notification sent for CVE-2026-18378
+2026-08-01 05:00:08,578 | INFO     | Synchronization completed
+2026-08-01 05:00:08,578 | INFO     | ----------------------------------------
+2026-08-01 05:00:08,579 | INFO     | Synchronization Summary
+2026-08-01 05:00:08,579 | INFO     | ----------------------------------------
+2026-08-01 05:00:08,579 | INFO     | Retrieved      : 25
+2026-08-01 05:00:08,579 | INFO     | New CVEs       : 23
+2026-08-01 05:00:08,579 | INFO     | Updated CVEs   : 2
+2026-08-01 05:00:08,580 | INFO     | Skipped CVEs   : 0
+2026-08-01 05:00:08,580 | INFO     | Database Total : 811
+2026-08-01 05:00:08,580 | INFO     | Duration       : 6.80 seconds
+2026-08-01 05:00:08,580 | INFO     | ----------------------------------------
+2026-08-01 05:00:08,580 | INFO     | Generating Excel report...
+2026-08-01 05:00:08,763 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 05:00:08,763 | INFO     | Sending email report...
+2026-08-01 05:00:17,108 | INFO     | Email report sent successfully.
+2026-08-01 06:00:01,710 | INFO     | Synchronization started
+2026-08-01 06:00:01,710 | INFO     | Incremental sync since 2026-07-31T23:30:08.000Z
+2026-08-01 06:00:03,248 | INFO     | Retrieved 16 CVEs from NVD
+2026-08-01 06:00:03,358 | INFO     | Synchronization completed
+2026-08-01 06:00:03,358 | INFO     | ----------------------------------------
+2026-08-01 06:00:03,358 | INFO     | Synchronization Summary
+2026-08-01 06:00:03,359 | INFO     | ----------------------------------------
+2026-08-01 06:00:03,359 | INFO     | Retrieved      : 16
+2026-08-01 06:00:03,360 | INFO     | New CVEs       : 10
+2026-08-01 06:00:03,360 | INFO     | Updated CVEs   : 6
+2026-08-01 06:00:03,361 | INFO     | Skipped CVEs   : 0
+2026-08-01 06:00:03,361 | INFO     | Database Total : 821
+2026-08-01 06:00:03,362 | INFO     | Duration       : 1.65 seconds
+2026-08-01 06:00:03,362 | INFO     | ----------------------------------------
+2026-08-01 06:00:03,362 | INFO     | Generating Excel report...
+2026-08-01 06:00:03,550 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 06:00:03,551 | INFO     | Sending email report...
+2026-08-01 06:00:11,084 | INFO     | Email report sent successfully.
+2026-08-01 07:00:01,597 | INFO     | Synchronization started
+2026-08-01 07:00:01,598 | INFO     | Incremental sync since 2026-08-01T00:30:03.000Z
+2026-08-01 07:00:02,674 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 07:00:02,684 | INFO     | Synchronization completed
+2026-08-01 07:00:02,684 | INFO     | ----------------------------------------
+2026-08-01 07:00:02,684 | INFO     | Synchronization Summary
+2026-08-01 07:00:02,685 | INFO     | ----------------------------------------
+2026-08-01 07:00:02,685 | INFO     | Retrieved      : 0
+2026-08-01 07:00:02,685 | INFO     | New CVEs       : 0
+2026-08-01 07:00:02,685 | INFO     | Updated CVEs   : 0
+2026-08-01 07:00:02,685 | INFO     | Skipped CVEs   : 0
+2026-08-01 07:00:02,685 | INFO     | Database Total : 821
+2026-08-01 07:00:02,686 | INFO     | Duration       : 1.09 seconds
+2026-08-01 07:00:02,686 | INFO     | ----------------------------------------
+2026-08-01 08:00:02,617 | INFO     | Synchronization started
+2026-08-01 08:00:02,618 | INFO     | Incremental sync since 2026-08-01T01:30:02.000Z
+2026-08-01 08:00:03,868 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 08:00:03,878 | INFO     | Synchronization completed
+2026-08-01 08:00:03,878 | INFO     | ----------------------------------------
+2026-08-01 08:00:03,878 | INFO     | Synchronization Summary
+2026-08-01 08:00:03,878 | INFO     | ----------------------------------------
+2026-08-01 08:00:03,878 | INFO     | Retrieved      : 0
+2026-08-01 08:00:03,878 | INFO     | New CVEs       : 0
+2026-08-01 08:00:03,878 | INFO     | Updated CVEs   : 0
+2026-08-01 08:00:03,879 | INFO     | Skipped CVEs   : 0
+2026-08-01 08:00:03,879 | INFO     | Database Total : 821
+2026-08-01 08:00:03,879 | INFO     | Duration       : 1.26 seconds
+2026-08-01 08:00:03,880 | INFO     | ----------------------------------------
+2026-08-01 09:00:00,751 | INFO     | Synchronization started
+2026-08-01 09:00:00,751 | INFO     | Incremental sync since 2026-08-01T02:30:03.000Z
+2026-08-01 09:00:02,133 | INFO     | Retrieved 6 CVEs from NVD
+2026-08-01 09:00:02,179 | INFO     | Synchronization completed
+2026-08-01 09:00:02,179 | INFO     | ----------------------------------------
+2026-08-01 09:00:02,179 | INFO     | Synchronization Summary
+2026-08-01 09:00:02,180 | INFO     | ----------------------------------------
+2026-08-01 09:00:02,180 | INFO     | Retrieved      : 6
+2026-08-01 09:00:02,181 | INFO     | New CVEs       : 6
+2026-08-01 09:00:02,181 | INFO     | Updated CVEs   : 0
+2026-08-01 09:00:02,181 | INFO     | Skipped CVEs   : 0
+2026-08-01 09:00:02,181 | INFO     | Database Total : 827
+2026-08-01 09:00:02,182 | INFO     | Duration       : 1.43 seconds
+2026-08-01 09:00:02,182 | INFO     | ----------------------------------------
+2026-08-01 09:00:02,182 | INFO     | Generating Excel report...
+2026-08-01 09:00:02,358 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 09:00:02,358 | INFO     | Sending email report...
+2026-08-01 09:00:09,437 | INFO     | Email report sent successfully.
+2026-08-01 09:36:48,656 | INFO     | Synchronization started
+2026-08-01 09:36:48,659 | INFO     | Incremental sync since 2026-08-01T03:30:02.000Z
+2026-08-01 09:36:51,146 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 09:36:51,159 | INFO     | Synchronization completed
+2026-08-01 09:36:51,159 | INFO     | ----------------------------------------
+2026-08-01 09:36:51,159 | INFO     | Synchronization Summary
+2026-08-01 09:36:51,160 | INFO     | ----------------------------------------
+2026-08-01 09:36:51,160 | INFO     | Retrieved      : 0
+2026-08-01 09:36:51,160 | INFO     | New CVEs       : 0
+2026-08-01 09:36:51,160 | INFO     | Updated CVEs   : 0
+2026-08-01 09:36:51,160 | INFO     | Skipped CVEs   : 0
+2026-08-01 09:36:51,160 | INFO     | Database Total : 827
+2026-08-01 09:36:51,161 | INFO     | Duration       : 2.50 seconds
+2026-08-01 09:36:51,161 | INFO     | ----------------------------------------
+2026-08-01 10:00:00,965 | INFO     | Synchronization started
+2026-08-01 10:00:00,966 | INFO     | Incremental sync since 2026-08-01T04:06:51.000Z
+2026-08-01 10:00:02,122 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 10:00:02,132 | INFO     | Synchronization completed
+2026-08-01 10:00:02,132 | INFO     | ----------------------------------------
+2026-08-01 10:00:02,133 | INFO     | Synchronization Summary
+2026-08-01 10:00:02,133 | INFO     | ----------------------------------------
+2026-08-01 10:00:02,134 | INFO     | Retrieved      : 0
+2026-08-01 10:00:02,134 | INFO     | New CVEs       : 0
+2026-08-01 10:00:02,134 | INFO     | Updated CVEs   : 0
+2026-08-01 10:00:02,135 | INFO     | Skipped CVEs   : 0
+2026-08-01 10:00:02,135 | INFO     | Database Total : 827
+2026-08-01 10:00:02,135 | INFO     | Duration       : 1.17 seconds
+2026-08-01 10:00:02,136 | INFO     | ----------------------------------------
+2026-08-01 11:00:02,351 | INFO     | Synchronization started
+2026-08-01 11:00:02,352 | INFO     | Incremental sync since 2026-08-01T04:30:02.000Z
+2026-08-01 11:00:04,434 | INFO     | Retrieved 25 CVEs from NVD
+2026-08-01 11:00:04,619 | INFO     | Synchronization completed
+2026-08-01 11:00:04,619 | INFO     | ----------------------------------------
+2026-08-01 11:00:04,620 | INFO     | Synchronization Summary
+2026-08-01 11:00:04,620 | INFO     | ----------------------------------------
+2026-08-01 11:00:04,620 | INFO     | Retrieved      : 25
+2026-08-01 11:00:04,621 | INFO     | New CVEs       : 20
+2026-08-01 11:00:04,621 | INFO     | Updated CVEs   : 5
+2026-08-01 11:00:04,621 | INFO     | Skipped CVEs   : 0
+2026-08-01 11:00:04,621 | INFO     | Database Total : 847
+2026-08-01 11:00:04,621 | INFO     | Duration       : 2.27 seconds
+2026-08-01 11:00:04,622 | INFO     | ----------------------------------------
+2026-08-01 11:00:04,622 | INFO     | Generating Excel report...
+2026-08-01 11:00:04,822 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 11:00:04,823 | INFO     | Sending email report...
+2026-08-01 11:00:11,737 | INFO     | Email report sent successfully.
+2026-08-01 12:00:02,270 | INFO     | Synchronization started
+2026-08-01 12:00:02,271 | INFO     | Incremental sync since 2026-08-01T05:30:04.000Z
+2026-08-01 12:00:03,377 | INFO     | Retrieved 1 CVEs from NVD
+2026-08-01 12:00:03,393 | INFO     | Synchronization completed
+2026-08-01 12:00:03,394 | INFO     | ----------------------------------------
+2026-08-01 12:00:03,394 | INFO     | Synchronization Summary
+2026-08-01 12:00:03,395 | INFO     | ----------------------------------------
+2026-08-01 12:00:03,396 | INFO     | Retrieved      : 1
+2026-08-01 12:00:03,396 | INFO     | New CVEs       : 1
+2026-08-01 12:00:03,397 | INFO     | Updated CVEs   : 0
+2026-08-01 12:00:03,397 | INFO     | Skipped CVEs   : 0
+2026-08-01 12:00:03,398 | INFO     | Database Total : 848
+2026-08-01 12:00:03,399 | INFO     | Duration       : 1.12 seconds
+2026-08-01 12:00:03,399 | INFO     | ----------------------------------------
+2026-08-01 12:00:03,400 | INFO     | Generating Excel report...
+2026-08-01 12:00:03,587 | INFO     | Excel report created: reports/CVE_Report.xlsx
+2026-08-01 12:00:03,587 | INFO     | Sending email report...
+2026-08-01 12:00:11,555 | INFO     | Email report sent successfully.
+2026-08-01 12:30:34,905 | INFO     | Synchronization started
+2026-08-01 12:30:34,906 | INFO     | Incremental sync since 2026-08-01T06:30:03.000Z
+2026-08-01 12:30:36,226 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 12:30:36,237 | INFO     | Synchronizing CISA KEV catalog...
+2026-08-01 12:30:36,237 | ERROR    | Synchronization failed
+Traceback (most recent call last):
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 94, in sync
+    self.sync_kev()
+  File "/home/srijit/Project/ThreatIntel/app/services/threat_service.py", line 222, in sync_kev
+    kev_entries = self.kev.fetch()
+                  ^^^^^^^^
+AttributeError: 'ThreatService' object has no attribute 'kev'
+2026-08-01 12:32:54,070 | INFO     | Synchronization started
+2026-08-01 12:32:54,070 | INFO     | Incremental sync since 2026-08-01T07:00:36.000Z
+2026-08-01 12:32:55,392 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 12:32:55,402 | INFO     | Synchronizing CISA KEV catalog...
+2026-08-01 12:32:56,260 | INFO     | KEV synchronization completed. Matched 14 CVEs.
+2026-08-01 12:32:56,261 | INFO     | Synchronization completed
+2026-08-01 12:32:56,261 | INFO     | ----------------------------------------
+2026-08-01 12:32:56,261 | INFO     | Synchronization Summary
+2026-08-01 12:32:56,261 | INFO     | ----------------------------------------
+2026-08-01 12:32:56,261 | INFO     | Retrieved      : 0
+2026-08-01 12:32:56,261 | INFO     | New CVEs       : 0
+2026-08-01 12:32:56,262 | INFO     | Updated CVEs   : 0
+2026-08-01 12:32:56,262 | INFO     | Skipped CVEs   : 0
+2026-08-01 12:32:56,262 | INFO     | Database Total : 848
+2026-08-01 12:32:56,262 | INFO     | Duration       : 2.19 seconds
+2026-08-01 12:32:56,262 | INFO     | ----------------------------------------
+2026-08-01 12:46:26,714 | INFO     | Synchronization started
+2026-08-01 12:46:26,714 | INFO     | Incremental sync since 2026-08-01T07:02:55.000Z
+2026-08-01 12:46:28,009 | INFO     | Retrieved 0 CVEs from NVD
+2026-08-01 12:46:28,020 | INFO     | Synchronizing CISA KEV catalog...
+2026-08-01 12:46:29,051 | INFO     | KEV synchronization completed. Matched 14 CVEs.
+2026-08-01 12:46:29,052 | INFO     | Synchronization completed
+2026-08-01 12:46:29,052 | INFO     | ----------------------------------------
+2026-08-01 12:46:29,052 | INFO     | Synchronization Summary
+2026-08-01 12:46:29,052 | INFO     | ----------------------------------------
+2026-08-01 12:46:29,052 | INFO     | Retrieved      : 0
+2026-08-01 12:46:29,052 | INFO     | New CVEs       : 0
+2026-08-01 12:46:29,052 | INFO     | Updated CVEs   : 0
+2026-08-01 12:46:29,053 | INFO     | Skipped CVEs   : 0
+2026-08-01 12:46:29,053 | INFO     | Database Total : 848
+2026-08-01 12:46:29,053 | INFO     | Duration       : 2.34 seconds
+2026-08-01 12:46:29,053 | INFO     | ----------------------------------------
