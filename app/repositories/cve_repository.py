@@ -147,6 +147,35 @@ class CVERepository:
 
         return total
 
+    @staticmethod
+    def _row_to_cve(row):
+        """Build a CVE object from a database row."""
+        kev_value = row[10]
+
+        if kev_value is None:
+            kev = False
+        else:
+            try:
+                kev = int(kev_value) == 1
+            except (TypeError, ValueError):
+                kev = str(kev_value).strip() == "1"
+
+        return CVE(
+            id=row[0],
+            published=row[1],
+            modified=row[2],
+            severity=row[3],
+            cvss_score=row[4],
+            cwe=row[5],
+            vendor=row[6],
+            product=row[7],
+            reference_urls=row[8],
+            description=row[9],
+            kev=kev,
+            kev_date=row[11],
+            kev_due_date=row[12],
+        )
+
     def get_all(self, limit=25):
         """Return the most actionable vulnerabilities."""
         conn = self.database.connect()
@@ -196,24 +225,7 @@ class CVERepository:
         rows = cursor.fetchall()
         conn.close()
 
-        return [
-            CVE(
-                id=row[0],
-                published=row[1],
-                modified=row[2],
-                severity=row[3],
-                cvss_score=row[4],
-                cwe=row[5],
-                vendor=row[6],
-                product=row[7],
-                reference_urls=row[8],
-                description=row[9],
-                kev=bool(row[10]),
-                kev_date=row[11],
-                kev_due_date=row[12],
-            )
-            for row in rows
-        ]
+        return [self._row_to_cve(row) for row in rows]
 
     def get_all_cves(self):
         """Return every CVE stored in the database."""
@@ -242,24 +254,7 @@ class CVERepository:
         rows = cursor.fetchall()
         conn.close()
 
-        return [
-            CVE(
-                id=row[0],
-                published=row[1],
-                modified=row[2],
-                severity=row[3],
-                cvss_score=row[4],
-                cwe=row[5],
-                vendor=row[6],
-                product=row[7],
-                reference_urls=row[8],
-                description=row[9],
-                kev=bool(row[10]),
-                kev_date=row[11],
-                kev_due_date=row[12],
-            )
-            for row in rows
-        ]
+        return [self._row_to_cve(row) for row in rows]
 
     def get_by_id(self, cve_id: str):
         """Return a single CVE by ID."""
@@ -296,21 +291,7 @@ class CVERepository:
         if row is None:
             return None
 
-        return CVE(
-            id=row[0],
-            published=row[1],
-            modified=row[2],
-            severity=row[3],
-            cvss_score=row[4],
-            cwe=row[5],
-            vendor=row[6],
-            product=row[7],
-            reference_urls=row[8],
-            description=row[9],
-            kev=bool(row[10]),
-            kev_date=row[11],
-            kev_due_date=row[12],
-        )
+        return self._row_to_cve(row)
 
     def get_statistics(self):
         """Return database statistics."""

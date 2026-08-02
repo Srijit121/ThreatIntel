@@ -4,3 +4,7 @@ __pycache__/
 .env
 threatintel_key
 threatintel_key.pub
+*.py[cod]
+reports/*.xlsx
+logs/*.log
+.vscode/
